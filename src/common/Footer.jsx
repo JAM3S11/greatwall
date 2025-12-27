@@ -3,51 +3,65 @@ import { Bolt, Send, TwitterIcon, Code, Github} from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  // Function to ensure scroll to top (extra safety)
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
-    <footer className="bg-white dark:bg-[#050a18] border-t border-gray-200 dark:border-[#1e293b]/50 pt-16 pb-8 transition-colors duration-300">
+    <footer className="bg-white border-t border-gray-200 pt-16 pb-8 transition-colors duration-300">
       <div className="px-4 md:px-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           
           {/* Brand Column */}
           <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-2 text-slate-900 dark:text-white">
+            <div className="flex items-center gap-2 text-slate-900">
               <div className="w-8 h-8 rounded-lg bg-[#135bec] flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
                 <Bolt size={18} fill="currentColor" />
               </div>
               <h3 className="text-xl font-bold tracking-tight">Great Wall</h3>
             </div>
-            <p className="text-sm text-slate-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-sm text-slate-600 leading-relaxed">
               Democratizing energy access through AI and Blockchain technology to build a resilient, sustainable power grid for Kenya.
             </p>
           </div>
 
-          {/* Company Column */}
+          {/* Company Column - Updated to use Link */}
           <div>
-            <h4 className="text-slate-900 dark:text-white font-bold mb-5 text-sm uppercase tracking-wider">Company</h4>
-            <ul className="flex flex-col gap-3 text-sm text-slate-600 dark:text-gray-400">
-              <li><a href="/about" className="hover:text-[#135bec] transition-colors">About Us</a></li>
-              <li><a href="/service" className="hover:text-[#135bec] transition-colors">Services</a></li>
-              <li><a href="/contact" className="hover:text-[#135bec] transition-colors">Contact</a></li>
+            <h4 className="text-slate-900 font-bold mb-5 text-sm uppercase tracking-wider">Company</h4>
+            <ul className="flex flex-col gap-3 text-sm text-slate-600">
+              <li>
+                <Link to="/about" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors">About Us</Link>
+              </li>
+              <li>
+                <Link to="/service" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors">Services</Link>
+              </li>
+              <li>
+                <Link to="/contact" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors">Contact</Link>
+              </li>
             </ul>
           </div>
 
           {/* Platform Column */}
           <div>
-            <h4 className="text-slate-900 dark:text-white font-bold mb-5 text-sm uppercase tracking-wider">Resources</h4>
-            <ul className="flex flex-col gap-3 text-sm text-slate-600 dark:text-gray-400">
-              <li><a className="hover:text-[#135bec] transition-colors" href="#">Blog</a></li>
-              <li><a className="hover:text-[#135bec] transition-colors" href="#">API Documentation</a></li>
-              <li><a className="hover:text-[#135bec] transition-colors" href="#">Whitepaper</a></li>
+            <h4 className="text-slate-900 font-bold mb-5 text-sm uppercase tracking-wider">Resources</h4>
+            <ul className="flex flex-col gap-3 text-sm text-slate-600">
+              <li><Link to="/blog" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors">Blog</Link></li>
+              <li><Link to="/api" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors">API Documentation</Link></li>
+              <li><Link to="/whitepaper" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors">Whitepaper</Link></li>
             </ul>
           </div>
 
           {/* Newsletter Column */}
           <div>
-            <h4 className="text-slate-900 dark:text-white font-bold mb-5 text-sm uppercase tracking-wider">Stay Updated</h4>
+            <h4 className="text-slate-900 font-bold mb-5 text-sm uppercase tracking-wider">Stay Updated</h4>
             <p className="text-xs text-gray-500 mb-4">Get the latest on grid status and token rewards.</p>
             <div className="flex gap-2">
               <input 
-                className="bg-gray-100 dark:bg-[#0d1425] border border-gray-200 dark:border-[#324467] text-sm rounded-lg px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-[#135bec]/50 focus:border-[#135bec] transition-all" 
+                className="bg-gray-100 border border-gray-200 text-sm rounded-lg px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-[#135bec]/50 focus:border-[#135bec] transition-all" 
                 placeholder="Email address" 
                 type="email"
               />
@@ -59,15 +73,15 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-200 dark:border-[#1e293b]/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-[11px] text-slate-500 dark:text-gray-500 uppercase tracking-widest font-medium">
+        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[11px] text-slate-500 uppercase tracking-widest font-medium">
             © 2025 Great Wall Energy. AI Sentinel Protected.
           </p>
           
-          <div className="flex gap-6 text-gray-400 dark:text-gray-500">
-            <a href="#" className="hover:text-[#135bec] transition-colors"><Github size={20} /></a>
-            <a href="#" className="hover:text-[#135bec] transition-colors"><TwitterIcon size={20} /></a>
-            <a href="/" className="hover:text-[#135bec] transition-colors"><Code size={20} /></a>
+          <div className="flex gap-6 text-gray-400">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#135bec] transition-colors"><Github size={20} /></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#135bec] transition-colors"><TwitterIcon size={20} /></a>
+            <Link to="/" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors"><Code size={20} /></Link>
           </div>
         </div>
       </div>
