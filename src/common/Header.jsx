@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Bolt, Wallet, Menu, X, Sun, Moon } from 'lucide-react';
+import { Bolt, Wallet, Menu, X } from 'lucide-react';
 import { useEnergy } from '../global/EnergyContext';
 
 const Header = () => {
-    const { isWalletConnected, connectWallet, theme, toggleTheme } = useEnergy();
+    // Removed theme and toggleTheme from context usage
+    const { isWalletConnected, connectWallet } = useEnergy();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    // Lock body scroll when menu is open to hide background content properly
+    // Lock body scroll when menu is open
     useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -25,12 +26,12 @@ const Header = () => {
     ];
 
     return (
-        <header className="sticky top-0 z-50 border-b border-gray-200 dark:border-[#232f48] bg-white dark:bg-[#0b1019] transition-all">
+        <header className="sticky top-0 z-50 border-b border-gray-200 bg-white transition-all">
             <div className="flex justify-center w-full px-4 md:px-10 py-3">
                 <div className="flex items-center justify-between w-full max-w-7xl">
 
                     {/* Logo */}
-                    <Link to="/" className="flex items-center gap-2 text-slate-900 dark:text-white">
+                    <Link to="/" className="flex items-center gap-2 text-slate-900">
                         <div className="w-8 h-8 rounded-lg bg-[#135bec] flex items-center justify-center text-white">
                             <Bolt size={18} fill="currentColor" />
                         </div>
@@ -43,7 +44,7 @@ const Header = () => {
                             <Link
                                 key={link.name}
                                 to={link.path}
-                                className="text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-[#135bec] dark:hover:text-blue-400 transition-colors"
+                                className="text-sm font-bold text-slate-600 hover:text-[#135bec] transition-colors"
                             >
                                 {link.name}
                             </Link>
@@ -51,10 +52,6 @@ const Header = () => {
                     </nav>
 
                     <div className="flex items-center gap-3">
-                        {/* <button onClick={toggleTheme} className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-slate-600 dark:text-yellow-400">
-                            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-                        </button> */}
-
                         {/* Desktop Connect Wallet */}
                         <button
                             onClick={connectWallet}
@@ -65,7 +62,7 @@ const Header = () => {
                         </button>
 
                         {/* Hamburger Button */}
-                        <button onClick={toggleMenu} className="md:hidden text-slate-900 dark:text-white p-2">
+                        <button onClick={toggleMenu} className="md:hidden text-slate-900 p-2">
                             <Menu size={24} />
                         </button>
                     </div>
