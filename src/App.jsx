@@ -7,6 +7,9 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicePage from './pages/ServicePage';
 import ContactUsPage from './pages/ContactUsPage';
+import BlogPage from "./pages/BlogPage.jsx";
+import APIPage from "./pages/APIPage.jsx";
+import WhitePaperPage from "./pages/WhitePaperPage.jsx";
 
 export default function App() {
   return (
@@ -20,6 +23,9 @@ export default function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/service" element={<ServicePage />} />
             <Route path="/contact" element={<ContactUsPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/api" element={<APIPage />} />
+            <Route path="/whitepaper" element={<WhitePaperPage />} />
           </Routes>
         </main>
 

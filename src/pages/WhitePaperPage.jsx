@@ -1,0 +1,92 @@
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { ShieldAlert, Lock, ArrowLeft, FileText, Download, Zap } from 'lucide-react';
+
+const WhitePaperPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6 relative overflow-hidden">
+      
+      {/* BG */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-[0.02] pointer-events-none">
+        <div className="absolute top-10 left-10 w-64 h-64 bg-[#135bec] rounded-full blur-[100px]" />
+        <div className="absolute bottom-10 right-10 w-64 h-64 bg-cyan-400 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="z-10 w-full max-w-2xl text-center">
+        
+        {/* Security Hex Indicator */}
+        <div className="relative inline-flex items-center justify-center mb-10">
+          <div className="absolute inset-0 rounded-3xl border border-slate-100 rotate-12 scale-110"></div>
+          <div className="absolute inset-0 rounded-3xl border border-blue-50 border-dashed animate-[spin_20s_linear_infinite]"></div>
+          <div className="w-20 h-20 rounded-3xl bg-slate-900 flex items-center justify-center text-white shadow-2xl">
+            <Lock size={32} className="text-blue-400 animate-pulse" />
+          </div>
+        </div>
+
+        {/* Branding & Status */}
+        <div className="flex flex-col items-center gap-4 mb-8">
+          <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-100 text-red-600 text-[10px] font-black uppercase tracking-[0.2em]">
+            <ShieldAlert size={14} /> Security Protocol: Active
+          </div>
+          <h1 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tighter">
+            WHITEPAPER <span className="text-[#135bec]">2.0</span>
+          </h1>
+        </div>
+
+        {/* Coming Soon Message Box */}
+        <div className="bg-slate-50 border border-slate-100 rounded-3xl p-8 mb-10 relative overflow-hidden">
+            <div className="relative z-10">
+                <p className="text-xl font-bold text-slate-800 mb-2">Technical Manuscript Under Seal</p>
+                <p className="text-slate-500 leading-relaxed max-w-md mx-auto mb-6">
+                    The comprehensive roadmap for the Great Wall Sentinel Network is currently undergoing final peer review and legal compliance audit.
+                </p>
+                
+                <div className="inline-block px-8 py-4 bg-white border-2 border-[#135bec] rounded-2xl shadow-xl shadow-blue-500/10">
+                    <span className="text-3xl font-black text-[#135bec] uppercase tracking-widest">
+                        Coming Soon
+                    </span>
+                </div>
+            </div>
+
+            {/* Faded Document Text Pattern (The "Blueprint" look) */}
+            <div className="absolute inset-0 opacity-[0.05] select-none pointer-events-none p-4 font-mono text-[8px] text-left">
+                [SECTION 01: TOKENOMICS] ... Initializing grid-balancing algorithms for decentralized nodes ... 
+                [SECTION 02: AI SENTINEL] ... Real-time load analysis via neural mesh networking ...
+                [SECTION 03: REGULATORY] ... Compliance with East African energy mandates ...
+                [SECTION 04: SECURITY] ... Proof-of-Energy verification protocols ...
+            </div>
+        </div>
+
+        {/* Footer Actions */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <Link to="/" className="flex items-center gap-2 font-bold text-slate-400 hover:text-[#135bec] transition-all group">
+            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+            Back to GW
+          </Link>
+          <div className="hidden sm:block w-px h-6 bg-slate-200"></div>
+          <div className="flex items-center gap-2 text-slate-400 font-bold text-xs uppercase tracking-widest">
+            <Zap size={14} className="text-[#135bec]" /> Deployment to be stated
+          </div>
+        </div>
+
+      </div>
+
+      {/* Modern Badge */}
+      <div className="absolute bottom-10 right-10 opacity-30 hidden lg:block">
+        <div className="flex items-center gap-4 border-l-2 border-slate-200 pl-4">
+            <FileText size={40} className="text-slate-400" />
+            <div className="text-left">
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Doc Reference</p>
+                <p className="text-xs font-mono text-slate-600">GW-WP-SENTINEL-2025</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default WhitePaperPage;
