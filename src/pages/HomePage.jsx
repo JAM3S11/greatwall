@@ -1,9 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import { ArrowRight, MapPin, Zap, Network, Coins, MemoryStick, ShieldCheck, Wallet } from 'lucide-react';
 import { useEnergy } from '../global/EnergyContext'; 
 
 const HomePage = () => {
   const { isWalletConnected, anomalyAlert } = useEnergy();
+  const navigate = useNavigate();
 
   return (
     <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white">
@@ -37,10 +39,14 @@ const HomePage = () => {
                 Great Wall is the first decentralized energy management protocol. Optimize consumption, earn rewards, and contribute to a sustainable grid.
               </p>
               <div className="flex flex-wrap gap-4 mt-10 justify-center md:justify-start">
-                <button className="h-12 px-8 bg-[#135bec] text-white rounded-lg font-bold flex items-center gap-2 shadow-xl shadow-blue-500/20 transition-all hover:scale-105">
+                <button 
+                  onClick={() => navigate("/login")}
+                  className="h-12 px-8 bg-[#135bec] text-white rounded-lg font-bold flex items-center gap-2 shadow-xl shadow-blue-500/20 transition-all hover:scale-105">
                   {isWalletConnected ? "Access Dashboard" : "Get Started"} <ArrowRight size={18} />
                 </button>
-                <button className="h-12 px-8 bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] rounded-lg font-bold hover:bg-gray-50 dark:hover:bg-[#232f48] transition-colors">
+                <button 
+                  onClick={() => navigate('/whitepaper')}
+                  className="h-12 px-8 bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] rounded-lg font-bold hover:bg-gray-50 dark:hover:bg-[#232f48] transition-colors">
                   Read Whitepaper
                 </button>
               </div>
@@ -211,7 +217,9 @@ const HomePage = () => {
           </div>
 
           <div className="mt-20 flex justify-center">
-            <button className="group flex items-center gap-3 px-8 py-4 bg-[#135bec] text-white rounded-xl font-bold hover:shadow-2xl hover:shadow-blue-500/40 transition-all active:scale-95">
+            <button 
+              onClick={() => navigate("/login")}
+              className="group flex items-center gap-3 px-8 py-4 bg-[#135bec] text-white rounded-xl font-bold hover:shadow-2xl hover:shadow-blue-500/40 transition-all active:scale-95">
               Ready to Connect? <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>

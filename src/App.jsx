@@ -10,6 +10,7 @@ import ContactUsPage from './pages/ContactUsPage';
 import BlogPage from "./pages/BlogPage.jsx";
 import APIPage from "./pages/APIPage.jsx";
 import WhitePaperPage from "./pages/WhitePaperPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/api" element={<APIPage />} />
             <Route path="/whitepaper" element={<WhitePaperPage />} />
+            <Route path="/login" element={<LoginPage />} />
           </Routes>
         </main>
 
