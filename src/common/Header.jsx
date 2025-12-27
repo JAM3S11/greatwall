@@ -7,7 +7,6 @@ const Header = () => {
     const { isWalletConnected, connectWallet } = useEnergy();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    // Lock body scroll when menu is open
     useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -18,12 +17,8 @@ const Header = () => {
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-    // Reusable scroll to top function
     const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const navLinks = [
@@ -33,7 +28,7 @@ const Header = () => {
     ];
 
     return (
-        <header className="sticky top-0 z-50 border-b border-gray-200 bg-white transition-all">
+        <header className="sticky top-0 z-50 border-b border-gray-100 bg-white transition-all">
             <div className="flex justify-center w-full px-4 md:px-10 py-3">
                 <div className="flex items-center justify-between w-full max-w-7xl">
 
@@ -45,7 +40,7 @@ const Header = () => {
                         <h2 className="text-xl font-bold tracking-tight">Great Wall</h2>
                     </Link>
 
-                    {/* DESKTOP NAV LINKS */}
+                    {/* DESKTOP NAV */}
                     <nav className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
                             <Link
@@ -75,19 +70,28 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* FULL-SCREEN WHITE MOBILE MENU */}
-            <div className={`fixed inset-0 z-[100] md:hidden bg-white transition-all duration-500 ease-in-out ${isMenuOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}`}>
+            {/* MOBILE MENU */}
+            <div className={`fixed inset-0 z-[100] md:hidden transition-all duration-500 ${isMenuOpen ? 'visible' : 'invisible'}`}>
                 
-                <div className="flex flex-col h-full w-full p-6">
-                    <div className="flex items-center justify-between mb-12">
+                {/* Background Dimmer */}
+                <div 
+                    className={`absolute inset-0 bg-black/5 transition-opacity duration-500 ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`} 
+                    onClick={toggleMenu}
+                />
+
+                <div 
+                    className={`absolute top-0 left-0 w-full h-1/2 bg-slate-200/90 shadow-2xl transition-transform duration-500 ease-in-out flex flex-col p-6 rounded-b-[2.5rem] border-b border-gray-200/20 ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}
+                    style={{ backdropFilter: 'none' }}
+                >
+                    <div className="flex items-center justify-between mb-8">
                         <div className="flex items-center gap-2">
                             <div className="w-8 h-8 rounded-lg bg-[#135bec] flex items-center justify-center text-white">
                                 <Bolt size={18} fill="currentColor" />
                             </div>
-                            <span className="text-xl font-bold text-slate-900">Great Wall</span>
+                            <span className="text-lg font-bold text-slate-900 tracking-tight">Great Wall</span>
                         </div>
-                        <button onClick={toggleMenu} className="p-2 bg-slate-100 rounded-full text-slate-900">
-                            <X size={24} />
+                        <button onClick={toggleMenu} className="p-2 bg-white/50 rounded-full text-slate-900 shadow-sm border border-gray-200/20">
+                            <X size={20} />
                         </button>
                     </div>
 
@@ -97,22 +101,22 @@ const Header = () => {
                                 key={link.name}
                                 to={link.path}
                                 onClick={() => { toggleMenu(); scrollToTop(); }}
-                                className="text-4xl font-black text-slate-900 hover:text-[#135bec] transition-colors"
+                                className="text-lg font-bold text-slate-800 hover:text-[#135bec] transition-all"
                             >
                                 {link.name}
                             </Link>
                         ))}
                     </nav>
 
-                    <div className="mt-auto space-y-4 pb-10">
+                    <div className="mt-auto space-y-4 pb-4">
                         <button
                             onClick={() => { connectWallet(); toggleMenu(); scrollToTop(); }}
-                            className="w-full bg-[#135bec] text-white py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 shadow-xl shadow-blue-500/20"
+                            className="w-full bg-[#135bec] text-white py-4 rounded-2xl font-bold text-sm flex items-center justify-center gap-3 shadow-xl shadow-blue-500/20"
                         >
-                            <Wallet size={20} />
+                            <Wallet size={18} />
                             {isWalletConnected ? "0x71C...4F2" : "Connect Wallet"}
                         </button>
-                        <p className="text-center text-xs font-bold text-slate-400 uppercase tracking-widest">
+                        <p className="text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                             © 2025 Great Wall Energy
                         </p>
                     </div>
