@@ -39,7 +39,7 @@ const ContactUsPage = () => {
                   </div>
                   <div>
                     <p className="text-[10px] uppercase font-bold text-slate-400 tracking-widest">Email Us</p>
-                    <p className="font-semibold text-slate-700">support@greatwall.ke</p>
+                    <p className="font-semibold text-slate-700">support@greatwall.ke{" "}/{" "} <span className='text-sm text-gray-400 italic tracking-[0.03em] font-medium'>jdndirangu2020@gmail.com</span></p>
                   </div>
                 </div>
 
@@ -49,7 +49,7 @@ const ContactUsPage = () => {
                   </div>
                   <div>
                     <p className="text-[10px] uppercase font-bold text-slate-400 tracking-widest">Call Us</p>
-                    <p className="font-semibold text-slate-700">+254 20 123 4567</p>
+                    <p className="font-semibold text-slate-700">+254 716 041 419</p>
                   </div>
                 </div>
 

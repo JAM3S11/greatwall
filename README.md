@@ -139,9 +139,9 @@ GREATWALL/
 
 For technical support or partnership inquiries, visit our **Nairobi Support Hub**:
 
-* **Email**: support@greatwall.ke
-* **Phone**: +254 20 123 4567
-* **Location**: Great Wall Tower, Westlands, Nairobi
+* **Email**: support@greatwall.ke (yet to come) ~ jdndirangu2020@gmail.com
+* **Phone**: +254 716041419
+* **Location**: Great Wall Tower ~ Nairobi
 
 ---
 
@@ -160,5 +160,3 @@ This project is private and proprietary.
 * Multi-language support for Kenyan markets
 
 ---
-
-**Built with ❤️ for Kenya's Energy Future**
