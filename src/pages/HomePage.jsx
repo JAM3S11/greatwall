@@ -26,6 +26,7 @@ const HomePage = () => {
 
         <div className="relative z-10 px-4 py-16 md:py-28 flex justify-center">
           <div className="max-w-7xl w-full flex flex-col md:flex-row items-center gap-16">
+            {/* Left Side */}
             <div className="flex-1 text-center md:text-left">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#135bec] text-xs font-bold uppercase mb-6">
                 <span className="w-2 h-2 rounded-full bg-[#135bec] animate-pulse"></span>
@@ -51,12 +52,12 @@ const HomePage = () => {
                 </button>
               </div>
             </div>
-
+            {/* Right Side */}
             <div className="flex-1 relative group">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-slate-900">
                 <img 
                   src="https://images.unsplash.com/photo-1596005554384-d293674c91d7?q=80&w=1198&auto=format&fit=crop" 
-                  alt="Rift Valley Energy" 
+                  alt="Nairobi Energy" 
                   className="w-full h-[450px] object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 brightness-75 group-hover:brightness-100" 
                 />
                 <div className="absolute top-4 right-4 flex items-center gap-2 px-3 py-1 bg-black/50 backdrop-blur-md rounded-full border border-white/20">
@@ -67,7 +68,7 @@ const HomePage = () => {
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2 text-white text-sm font-bold">
                       <MapPin size={16} className="text-[#135bec]" /> 
-                      <span className="tracking-wide">Rift Valley, Kenya</span>
+                      <span className="tracking-wide">Nairobi, Kenya</span>
                     </div>
                     <div className="text-[10px] text-blue-400 font-mono">SECURE_PROTOCOL_V4.2</div>
                   </div>
