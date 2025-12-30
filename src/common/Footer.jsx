@@ -79,7 +79,7 @@ const Footer = () => {
           </p>
           
           <div className="flex gap-6 text-gray-400">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#135bec] transition-colors"><Github size={20} /></a>
+            <a href="https://github.com/JAM3S11/greatwall.git" target="_blank" rel="noopener noreferrer" className="hover:text-[#135bec] transition-colors"><Github size={20} /></a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#135bec] transition-colors"><TwitterIcon size={20} /></a>
             <Link to="/" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors"><Code size={20} /></Link>
           </div>
