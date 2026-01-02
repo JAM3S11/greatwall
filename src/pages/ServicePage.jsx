@@ -61,7 +61,7 @@ const ServicePage = () => {
         </section>
 
         {/* SECTION 2: CORE SERVICES GRID */}
-        <section className="py-24 px-8 bg-slate-50/50 dark:bg-[#070d1d]/30">
+        <section className="py-24 px-8 bg-slate-50/50 dark:bg-[#070d1d]/10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Core Ecosystem Services</h2>
@@ -109,15 +109,15 @@ const ServicePage = () => {
               </div>
             </div>
             <div className="md:w-1/2 grid grid-cols-2 gap-4">
-              <div className="bg-white dark:bg-blue-700/20 p-8 rounded-2xl border border-slate-200 text-center flex flex-col items-center justify-center gap-2 shadow-sm">
+              <div className="bg-white dark:bg-[#192233] p-8 rounded-2xl border border-slate-200 dark:border-[#324467] text-center flex flex-col items-center justify-center gap-2 shadow-sm">
                  <Layers className="text-[#135bec] mb-2" />
-                 <span className="text-2xl font-bold text-slate-900">2.5k+</span>
-                 <span className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Sensors Active</span>
+                 <span className="text-2xl font-bold text-slate-900 dark:text-white">2.5k+</span>
+                 <span className="text-[10px] text-slate-400 dark:text-slate-100 uppercase font-bold tracking-widest">Sensors Active</span>
               </div>
-              <div className="bg-white dark:bg-blue-700/20 p-8 rounded-2xl border border-slate-200 text-center flex flex-col items-center justify-center gap-2 shadow-sm">
+              <div className="bg-white dark:bg-[#192233] p-8 rounded-2xl border border-slate-200 dark:border-[#324467] text-center flex flex-col items-center justify-center gap-2 shadow-sm">
                  <CheckCircle2 className="text-emerald-500 mb-2" />
-                 <span className="text-2xl font-bold text-slate-900">99.9%</span>
-                 <span className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Uptime</span>
+                 <span className="text-2xl font-bold text-slate-900 dark:text-white">99.9%</span>
+                 <span className="text-[10px] text-slate-400 dark:text-slate-100 uppercase font-bold tracking-widest">Uptime</span>
               </div>
               <div className="col-span-2 bg-gradient-to-br from-[#135bec] to-blue-700 p-8 rounded-2xl shadow-xl text-white">
                  <h4 className="text-xl font-bold mb-2">Ready to Optimize?</h4>
