@@ -8,7 +8,7 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white">
+    <div className="bg-white dark:bg-[#050a18] text-slate-900 dark:text-white">
       
       {/* 1. AI Alert Notification */}
       {anomalyAlert && (

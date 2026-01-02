@@ -12,7 +12,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-white border-t border-gray-200 pt-16 pb-8 transition-colors duration-300">
+    <footer className="bg-white dark:bg-[#070c1a] border-t border-gray-200 dark:border-[#232f48] pt-16 pb-8 transition-colors duration-300">
       <div className="px-4 md:px-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           
@@ -22,17 +22,17 @@ const Footer = () => {
               <div className="w-8 h-8 rounded-lg bg-[#135bec] flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
                 <Bolt size={18} fill="currentColor" />
               </div>
-              <h3 className="text-xl font-bold tracking-tight">Great Wall</h3>
+              <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Great Wall</h3>
             </div>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
               Democratizing energy access through AI and Blockchain technology to build a resilient, sustainable power grid for Kenya.
             </p>
           </div>
 
           {/* Company Column - Updated to use Link */}
           <div>
-            <h4 className="text-slate-900 font-bold mb-5 text-sm uppercase tracking-wider">Company</h4>
-            <ul className="flex flex-col gap-3 text-sm text-slate-600">
+            <h4 className="text-slate-900 dark:text-white font-bold mb-5 text-sm uppercase tracking-wider">Company</h4>
+            <ul className="flex flex-col gap-3 text-sm text-slate-600 dark:text-gray-300">
               <li>
                 <Link to="/about" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors">About Us</Link>
               </li>
@@ -47,8 +47,8 @@ const Footer = () => {
 
           {/* Platform Column */}
           <div>
-            <h4 className="text-slate-900 font-bold mb-5 text-sm uppercase tracking-wider">Resources</h4>
-            <ul className="flex flex-col gap-3 text-sm text-slate-600">
+            <h4 className="text-slate-900 dark:text-white font-bold mb-5 text-sm uppercase tracking-wider">Resources</h4>
+            <ul className="flex flex-col gap-3 text-sm text-slate-600 dark:text-gray-300">
               <li><Link to="/blog" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors">Blog</Link></li>
               <li><Link to="/api" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors">API Documentation</Link></li>
               <li><Link to="/whitepaper" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors">Whitepaper</Link></li>
@@ -57,8 +57,8 @@ const Footer = () => {
 
           {/* Newsletter Column */}
           <div>
-            <h4 className="text-slate-900 font-bold mb-5 text-sm uppercase tracking-wider">Stay Updated</h4>
-            <p className="text-xs text-gray-500 mb-4">Get the latest on grid status and token rewards.</p>
+            <h4 className="text-slate-900 dark:text-white font-bold mb-5 text-sm uppercase tracking-wider">Stay Updated</h4>
+            <p className="text-xs text-gray-500 dark:text-gray-100 mb-4">Get the latest on grid status and token rewards.</p>
             <div className="flex gap-2">
               <input 
                 className="bg-gray-100 border border-gray-200 text-sm rounded-lg px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-[#135bec]/50 focus:border-[#135bec] transition-all" 
@@ -73,12 +73,12 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-[11px] text-slate-500 uppercase tracking-widest font-medium">
+        <div className="border-t border-gray-200 dark:border-[#232f48] pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[11px] text-slate-500 dark:text-gray-300 uppercase tracking-widest font-medium">
             © 2025 Great Wall Energy. AI Sentinel Protected.
           </p>
           
-          <div className="flex gap-6 text-gray-400">
+          <div className="flex gap-6 text-gray-400 dark:text-slate-100">
             <a href="https://github.com/JAM3S11/greatwall.git" target="_blank" rel="noopener noreferrer" className="hover:text-[#135bec] transition-colors"><Github size={20} /></a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#135bec] transition-colors"><TwitterIcon size={20} /></a>
             <Link to="/" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors"><Code size={20} /></Link>
