@@ -75,7 +75,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-200 dark:border-[#232f48] pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[11px] text-slate-500 dark:text-gray-300 uppercase tracking-widest font-medium">
-            © 2025 Great Wall Energy. AI Sentinel Protected.
+            © 2026 Great Wall Energy. AI Sentinel Protected.
           </p>
           
           <div className="flex gap-6 text-gray-400 dark:text-slate-100">
