@@ -135,7 +135,7 @@ const Header = () => {
                             {isWalletConnected ? "0x71C...4F2" : "Connect Wallet"}
                         </button>
                         <p className="text-center text-[10px] font-bold text-slate-400 dark:text-gray-500 uppercase tracking-widest">
-                            © 2025 Great Wall Energy
+                            © 2026 Great Wall Energy
                         </p>
                     </div>
                 </div>
