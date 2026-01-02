@@ -21,7 +21,7 @@ const BlogPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6 relative overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#050a18] flex flex-col items-center justify-center p-6 relative overflow-hidden">
       
       {/* BG */}
       <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none" 
@@ -40,10 +40,10 @@ const BlogPage = () => {
         </div>
 
         <div className="text-center mb-10">
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter mb-4">
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-slate-100 tracking-tighter mb-4">
             THE GRID <span className="text-[#135bec]">BLOG</span>
           </h1>
-          <p className="text-slate-500 font-medium text-lg max-w-xl mx-auto">
+          <p className="text-slate-500 dark:text-slate-200 font-medium text-lg max-w-xl mx-auto">
             Decentralized energy intelligence, AI grid optimization, and the future of power in East Africa.
           </p>
         </div>
@@ -75,14 +75,14 @@ const BlogPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-t border-slate-100 pt-8">
-          <Link to="/" className="flex items-center gap-2 font-bold text-slate-400 hover:text-[#135bec] transition-all group">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-t border-slate-100 dark:border-[#324467]/20 pt-8">
+          <Link to="/" className="flex items-center gap-2 font-bold text-slate-400 dark:text-slate-200 hover:text-[#135bec] transition-all group">
             <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
             Return back
           </Link>
           
           <div className="flex items-center gap-4">
-            <button className="flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 text-slate-600 font-bold text-sm hover:bg-slate-50 transition-all">
+            <button className="flex items-center gap-2 px-4 py-2 rounded-full dark:bg-[#192233] border border-slate-200 dark:border-[#324467] text-slate-600 dark:text-white font-bold text-sm hover:bg-slate-50 dark:hover:bg-[#232f48] transition-all">
               <Share2 size={16} /> Share Grid
             </button>
             <button className="bg-[#135bec] text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg shadow-blue-500/20 hover:scale-105 transition-all">

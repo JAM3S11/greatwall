@@ -14,7 +14,7 @@ const APIPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 relative overflow-hidden">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#050a18] flex flex-col items-center justify-center p-6 relative overflow-hidden">
       {/* DIV BG GRID PATTERN */}
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
            style={{ backgroundImage: 'linear-gradient(#135bec 1.5px, transparent 1.5px), linear-gradient(90deg, #135bec 1.5px, transparent 1.5px)', backgroundSize: '40px 40px' }}>
@@ -23,28 +23,28 @@ const APIPage = () => {
       <div className="z-10 w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left */}
         <div className="space-y-8 text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-[#135bec] text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-[#135bec] text-xs font-bold uppercase tracking-wider">
             <Cpu size={12} className="animate-pulse" /> 
             Feature Coming Soon
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter leading-none">
+          <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-slate-200 tracking-tighter leading-none">
             PROGRAM THE <br />
             <span className="text-[#135bec]">ENERGY</span> GRID.
           </h1>
           
-          <p className="text-slate-600 text-lg leading-relaxed max-w-md">
+          <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed max-w-md">
             The Great Wall API is currently in private beta. Soon, developers will be able to programmatically access grid data and build the future of decentralized power.
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <div className="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex-1 min-w-[200px]">
-              <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400">
+            <div className="flex items-center gap-3 bg-white dark:bg-[#0d1425]/70 p-4 rounded-2xl shadow-sm border border-slate-200 dark:border-[#324467] flex-1 min-w-[200px]">
+              <div className="w-10 h-10 rounded-full bg-slate-100 dark:bg-blue-800/50 flex items-center justify-center text-slate-400">
                 <Globe size={20} />
               </div>
               <div>
-                <p className="text-xs font-bold text-slate-400 uppercase">Endpoint</p>
-                <p className="text-sm font-mono text-slate-900">api.greatwall.energy</p>
+                <p className="text-xs font-bold text-slate-400 dark:text-slate-200 uppercase">Endpoint</p>
+                <p className="text-sm font-mono text-slate-900 dark:text-slate-400">api.greatwall.energy</p>
               </div>
             </div>
           </div>
@@ -114,7 +114,7 @@ const APIPage = () => {
       <div className="absolute bottom-14 left-10 hidden md:block">
         <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-[#135bec] animate-ping"></div>
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">
+            <p className="text-[10px] font-black text-slate-400 dark:text-slate-200 uppercase tracking-[0.3em]">
                 Protocol Status: Development Phase
             </p>
         </div>
