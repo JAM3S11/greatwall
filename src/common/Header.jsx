@@ -89,12 +89,12 @@ const Header = () => {
                 />
 
                 <div 
-                    className={`absolute top-0 left-0 w-full h-3/4 bg-slate-200/90 dark:bg-[#192233]/95 shadow-2xl 
-                        transition-transform duration-500 ease-in-out flex flex-col p-6 rounded-b-[2.5rem] 
+                    className={`absolute top-0 left-0 w-full h-1/2 bg-slate-200/90 dark:bg-[#192233]/95 shadow-2xl 
+                        transition-transform duration-500 ease-in-out flex flex-col p-4 rounded-b-[2.5rem] 
                         border-b border-gray-200/20 dark:border-[#324467]/20 ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}
                     style={{ backdropFilter: 'none' }}
                 >
-                    <div className="flex items-center justify-between mb-8">
+                    <div className="flex items-center justify-between mb-5">
                         <div className="flex items-center gap-2">
                             <div className="w-8 h-8 rounded-lg bg-[#135bec] flex items-center justify-center text-white">
                                 <Bolt size={18} fill="currentColor" />
@@ -106,7 +106,7 @@ const Header = () => {
                         </button>
                     </div>
 
-                    <nav className="flex flex-col items-center justify-center flex-grow gap-8">
+                    <nav className="flex flex-col items-center justify-center flex-grow gap-4">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
