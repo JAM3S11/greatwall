@@ -89,7 +89,7 @@ const Header = () => {
                 />
 
                 <div 
-                    className={`absolute top-0 left-0 w-full h-1/2 bg-slate-200/90 dark:bg-[#192233]/95 shadow-2xl 
+                    className={`absolute top-0 left-0 w-full h-3/4 bg-slate-200/90 dark:bg-[#192233]/95 shadow-2xl 
                         transition-transform duration-500 ease-in-out flex flex-col p-6 rounded-b-[2.5rem] 
                         border-b border-gray-200/20 dark:border-[#324467]/20 ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}
                     style={{ backdropFilter: 'none' }}
@@ -112,7 +112,7 @@ const Header = () => {
                                 key={link.name}
                                 to={link.path}
                                 onClick={() => { toggleMenu(); scrollToTop(); }}
-                                className="text-lg font-bold text-slate-800 dark:text-gray-200 hover:text-[#135bec] dark:hover:text-blue-400 transition-all"
+                                className="text-base font-bold text-slate-800 dark:text-gray-200 hover:text-[#135bec] dark:hover:text-blue-400 transition-all"
                             >
                                 {link.name}
                             </Link>
@@ -122,7 +122,7 @@ const Header = () => {
                     <div className="mt-auto space-y-4 pb-4">
                         <button
                             onClick={toggleDarkMode}
-                            className="w-full bg-gray-100 dark:bg-[#0f141e] text-slate-700 dark:text-gray-300 py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-3 border border-gray-200 dark:border-[#324467]"
+                            className="w-full bg-gray-100 dark:bg-[#0f141e] text-slate-700 dark:text-gray-300 py-3 mt-3 rounded-xl font-bold text-sm flex items-center justify-center gap-3 border border-gray-200 dark:border-[#324467]"
                         >
                             {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
                             {isDarkMode ? 'Light Mode' : 'Dark Mode'}
