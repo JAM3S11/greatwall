@@ -20,8 +20,8 @@ const WhitePaperPage = () => {
         
         {/* Security Hex Indicator */}
         <div className="relative inline-flex items-center justify-center mb-10">
-          <div className="absolute inset-0 rounded-3xl border border-slate-100 dark:border-blue-500/40 rotate-12 scale-110"></div>
-          <div className="absolute inset-0 rounded-3xl border border-blue-50 dark:border-blue-800/80 border-dashed animate-[spin_20s_linear_infinite]"></div>
+          <div className="absolute inset-0 rounded-3xl border border-slate-100 dark:border-gray-500 rotate-12 scale-110"></div>
+          <div className="absolute inset-0 rounded-3xl border border-blue-50 dark:border-gray-200 border-dashed animate-[spin_20s_linear_infinite]"></div>
           <div className="w-20 h-20 rounded-3xl bg-slate-900 flex items-center justify-center text-white shadow-2xl">
             <Lock size={32} className="text-blue-400 animate-pulse" />
           </div>
