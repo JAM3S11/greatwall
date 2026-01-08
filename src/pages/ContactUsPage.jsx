@@ -23,7 +23,13 @@ const SelectPane = ({ value, onChange, options }) => (
               className={({ active }) => `relative cursor-default select-none py-3 pl-10 pr-4 ${active ? 'bg-blue-50 text-blue-500 dark:text-gray-800' : 'text-gray-900 dark:text-white'}`}
               value={queue}
             >
-              <span className='block, truncate'>{queue}</span>
+              {({ selected }) => (
+                <>
+                  <span className={`block truncate ${selected ? 'font-bold' : 'font-normal'}`}>
+                    {queue}
+                  </span>
+                </>
+              )}
             </ListboxOption>
           ))}
         </ListboxOptions>
@@ -42,6 +48,7 @@ const ContactUsPage = () => {
     setResults("Sending....");
 
     const formData = new FormData(event.target);
+    formData.append("query_type", selectedQuery);
     formData.append("access_keys", import.meta.env.VITE_GREATWALL_HUB_CONTACT_FORM);
 
     try {
@@ -55,6 +62,7 @@ const ContactUsPage = () => {
       if(data.success){
         setResults("Form submitted successfully");
         event.target.reset();
+        setSelectedQuery(querys[0]);
       } else{
         setResults(data.message);
       }
@@ -129,20 +137,20 @@ const ContactUsPage = () => {
             {/* Right Column: Form */}
             <div className="bg-white dark:bg-[#0d1425]/70 p-10 rounded-3xl border border-slate-200 dark:border-blue-800/50 shadow-2xl shadow-slate-200/50 dark:shadow-blue-800/10 relative">
               <h3 className="text-xl font-bold mb-8 text-slate-800 dark:text-slate-100">Send us a message</h3>
-              <form className="space-y-5">
+              <form onSubmit={handleForm} className="space-y-5">
                 <div className="grid grid-cols-2 gap-4">
-                  <input type="text" placeholder="Name" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all" />
-                  <input type="text" placeholder="Company" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all" />
+                  <input name='name' type="text" placeholder="Name" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all" required />
+                  <input name='company' type="text" placeholder="Company" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all" required />
                 </div>
-                <input type="email" placeholder="Email Address" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all" />
+                <input name='email' type="email" placeholder="Email Address" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all" required />
                 {/* <select className="w-full bg-slate-50 border border-slate-200 p-4 rounded-xl focus:outline-none text-slate-500">
                   <option>General Inquiry</option>
                   <option>Technical Support</option>
                   <option>Partnership</option>
                 </select> */}
                 <SelectPane value={selectedQuery} onChange={setSelectedQuery} options={querys} />
-                <textarea placeholder="How can we help you scale your energy infrastructure?" rows="4" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all"></textarea>
-                <button className="w-full bg-[#135bec] text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 active:scale-95">
+                <textarea name='message' placeholder="How can we help you scale your energy infrastructure?" rows="4" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all" required></textarea>
+                <button type='submit' className="w-full bg-[#135bec] text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 active:scale-95">
                   Send Message <Send size={18} />
                 </button>
               </form>
