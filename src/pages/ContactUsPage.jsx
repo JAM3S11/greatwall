@@ -2,37 +2,44 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, ChevronDown } from 'lucide-react';
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption, Transition } from '@headlessui/react';
 
-const querys = ["General Inquiry", "Technical Support", "Parternship"];
+const queryOptions = ["General Inquiry", "Technical Support", "Partnership"];
 
 const SelectPane = ({ value, onChange, options }) => (
   <Listbox value={value} onChange={onChange}>
     <div className='relative mt-1'>
-      <ListboxButton className="relative w-full cursor-pointer rounded-lg py-3 pl-4 pr-10 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-colors focus:outline-none">
-        <span className='block truncate text-slate-400 font-normal text-left'>
+      <ListboxButton className="relative w-full cursor-pointer rounded-xl py-4 pl-4 pr-10 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-[#135bec]/50 transition-all focus:outline-none focus:ring-2 focus:ring-[#135bec]/20">
+        <span className={`block truncate text-left ${value ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`}>
           {value ? value : "Select query"}
         </span>
-        <span className='absolute inset-y-0 right-0 flex items-center pr-2'>
-          <ChevronDown className='w-4 h-4 text-gray-400' />
+        <span className='absolute inset-y-0 right-0 flex items-center pr-3'>
+          <ChevronDown className='w-5 h-5 text-gray-400' />
         </span>
       </ListboxButton>
-      <Transition leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
-        <ListboxOptions className="absolute z-50 mt-1 max-h-40 w-full overflow-auto rounded-lg bg-white dark:bg-[#0c162f] text-base shadow-2xl ring-1 ring-blue-300 ring-opacity-5 focus:outline-none sm:text-sm">
-          {options.map((queue, i) => (
+      <Transition 
+        enter="transition duration-100 ease-out"
+        enterFrom="transform scale-95 opacity-0"
+        enterTo="transform scale-100 opacity-100"
+        leave="transition duration-75 ease-out"
+        leaveFrom="transform scale-100 opacity-100"
+        leaveTo="transform scale-95 opacity-0"
+      >
+        <ListboxOptions className="absolute z-50 mt-2 max-h-60 w-full overflow-auto rounded-xl bg-white dark:bg-[#0c162f] py-1 text-base shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm border border-slate-200 dark:border-white/10">
+          {options.map((option, i) => (
             <ListboxOption 
               key={i}
-              className={({ active }) => `relative cursor-default select-none py-3 pl-10 pr-4 ${active ? 'bg-blue-50 text-blue-500 dark:text-gray-800' : 'text-gray-900 dark:text-white'}`}
-              value={queue}
+              className={({ active }) => `relative cursor-pointer select-none py-3 pl-10 pr-4 transition-colors ${active ? 'bg-blue-50 dark:bg-blue-500/20 text-[#135bec] dark:text-blue-400' : 'text-slate-700 dark:text-slate-300'}`}
+              value={option}
             >
               {({ selected }) => (
                 <>
                   <span className={`block truncate ${selected ? 'font-bold' : 'font-normal'}`}>
-                    {queue}
+                    {option}
                   </span>
                   {selected ? (
-                    <span className='absolute inset-y-0 left-0 flex items-center pl-3 text-[#135bec]'>
-                      <div className='w-1.5 h-1.5 rounded-full bg-[#135bec]'></div>
+                    <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-[#135bec]">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#135bec]" />
                     </span>
-                  ) : null }
+                  ) : null}
                 </>
               )}
             </ListboxOption>
@@ -41,20 +48,20 @@ const SelectPane = ({ value, onChange, options }) => (
       </Transition>
     </div>
   </Listbox>
-)
+);
 
 const ContactUsPage = () => {
-  const [selectedQuery, setSelectedQuery] = useState(querys[0]);
-  const [results, setResults] = useState("");
-
+  const [selectedQuery, setSelectedQuery] = useState(queryOptions[0]);
+  const [status, setStatus] = useState("");
 
   const handleForm = async (event) => {
     event.preventDefault();
-    setResults("Sending....");
+    setStatus("Sending....");
 
     const formData = new FormData(event.target);
+    
     formData.append("query_type", selectedQuery);
-    formData.append("access_keys", import.meta.env.VITE_GREATWALL_HUB_CONTACT_FORM);
+    formData.append("access_key", import.meta.env.VITE_GREATWALL_HUB_CONTACT_FORM);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -62,19 +69,19 @@ const ContactUsPage = () => {
         body: formData
       });
   
-      const data = response.json();
+      const data = await response.json();
   
       if(data.success){
-        setResults("Form submitted successfully");
+        setStatus("Message sent successfully!");
         event.target.reset();
-        setSelectedQuery(querys[0]);
-      } else{
-        setResults(data.message);
+        setSelectedQuery(queryOptions[0]);
+      } else {
+        setStatus(data.message);
       }
     } catch (error) {
-      setResults("SOmething went wrong. Please try again.");
+      setStatus("Something went wrong. Please try again.");
     }
-  }
+  };
 
   return (
     <div className="bg-white dark:bg-[#050a18] text-slate-900 dark:text-white min-h-screen relative overflow-hidden">
@@ -86,7 +93,6 @@ const ContactUsPage = () => {
       </div>
 
       <div className="relative z-10">
-        {/* SECTION 1: CONTACT HERO & FORM */}
         <section className="py-24 px-8 border-b border-slate-100 dark:border-[#324467]/20">
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
             
@@ -102,65 +108,52 @@ const ContactUsPage = () => {
                   Future. Let’s Talk.
                 </span>
               </h1>
-              <p className="text-slate-500 dark:text-slate-100 text-lg mb-10 leading-relaxed max-w-md">
-                Whether you need AI-driven energy insights or have questions about our Web3 protocol, our team is ready to assist.
+              <p className="text-slate-500 dark:text-slate-400 text-lg mb-10 leading-relaxed max-w-md">
+                I focus on writing clean, maintainable, and readable code that makes building and improving products feel smooth and enjoyable.
               </p>
               
               <div className="space-y-4">
-                <div className="flex items-center gap-4 bg-slate-50 dark:bg-[#0d1425]/70 p-5 rounded-2xl border border-slate-200 dark:border-[#324467] group hover:border-[#135bec]/30 dark:hover:border-[#2c58af] transition-all">
-                  <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-800/50 flex items-center justify-center text-[#135bec]">
-                    <Mail size={20} />
+                {[
+                  { icon: Mail, label: 'Email Us', val: 'support@greatwall.ke', sub: 'jdndirangu2020@gmail.com' },
+                  { icon: Phone, label: 'Call Us', val: '+254 716 041 419' },
+                  { icon: MapPin, label: 'Visit HQ', val: 'Great Wall Tower, Nairobi' }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-4 bg-slate-50 dark:bg-[#0d1425]/70 p-5 rounded-2xl border border-slate-200 dark:border-[#324467] group hover:border-[#135bec]/30 transition-all">
+                    <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-800/50 flex items-center justify-center text-[#135bec]">
+                      <item.icon size={20} />
+                    </div>
+                    <div>
+                      <p className="text-[10px] uppercase font-bold text-slate-400 tracking-widest">{item.label}</p>
+                      <p className="font-semibold text-slate-700 dark:text-slate-200">
+                        {item.val} {item.sub && <span className='text-xs text-gray-400 block font-normal'>{item.sub}</span>}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-100 tracking-widest">Email Us</p>
-                    <p className="font-semibold text-slate-700 dark:text-slate-500">support@greatwall.ke{" "}/{" "} <span className='text-sm text-gray-400 dark:text-gray-500 italic tracking-[0.03em] font-medium'>jdndirangu2020@gmail.com</span></p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 bg-slate-50 dark:bg-[#0d1425]/70 p-5 rounded-2xl border border-slate-200 dark:border-[#324467] group hover:border-[#135bec]/30 dark:hover:border-[#2c58af] transition-all">
-                  <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-800/50 flex items-center justify-center text-[#135bec]">
-                    <Phone size={20} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-100 tracking-widest">Call Us</p>
-                    <p className="font-semibold text-slate-700 dark:text-slate-500">+254 716 041 419</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 bg-slate-50 dark:bg-[#0d1425]/70 p-5 rounded-2xl border border-slate-200 dark:border-[#324467] group hover:border-[#135bec]/30 dark:hover:border-[#2c58af] transition-all">
-                  <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-800/50 flex items-center justify-center text-[#135bec]">
-                    <MapPin size={20} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-100 tracking-widest">Visit HQ</p>
-                    <p className="font-semibold text-slate-700 dark:text-slate-500 text-sm">Great Wall Tower, Nairobi</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
             {/* Right Column: Form */}
-            <div className="bg-white dark:bg-[#0d1425]/70 p-10 rounded-3xl border border-slate-200 dark:border-blue-800/50 shadow-2xl shadow-slate-200/50 dark:shadow-blue-800/10 relative">
+            <div className="bg-white dark:bg-[#0d1425]/70 p-10 rounded-3xl border border-slate-200 dark:border-blue-800/50 shadow-2xl shadow-slate-200/50 dark:shadow-none relative">
               <h3 className="text-xl font-bold mb-8 text-slate-800 dark:text-slate-100">Send us a message</h3>
               <form onSubmit={handleForm} className="space-y-5">
                 <div className="grid grid-cols-2 gap-4">
-                  <input name='name' type="text" placeholder="Name" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all" required />
-                  <input name='company' type="text" placeholder="Company" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all" required />
+                  <input name='name' type="text" placeholder="Name" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all dark:text-white" required />
+                  <input name='company' type="text" placeholder="Company" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all dark:text-white" required />
                 </div>
-                <input name='email' type="email" placeholder="Email Address" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all" required />
-                {/* <select className="w-full bg-slate-50 border border-slate-200 p-4 rounded-xl focus:outline-none text-slate-500">
-                  <option>General Inquiry</option>
-                  <option>Technical Support</option>
-                  <option>Partnership</option>
-                </select> */}
-                <SelectPane value={selectedQuery} onChange={setSelectedQuery} options={querys} />
-                <textarea name='message' placeholder="How can we help you scale your energy infrastructure?" rows="4" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all" required></textarea>
+                <input name='email' type="email" placeholder="Email Address" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all dark:text-white" required />
+                
+                <SelectPane value={selectedQuery} onChange={setSelectedQuery} options={queryOptions} />
+                
+                <textarea name='message' placeholder="How can we help you scale your energy infrastructure?" rows="4" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all dark:text-white" required></textarea>
+                
                 <button type='submit' className="w-full bg-[#135bec] text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 active:scale-95">
                   Send Message <Send size={18} />
                 </button>
-                {results && (
-                  <p className={`text-center text-sm font-medium mt-4 ${results.includes("successfully") ? "text-green-500" : "text-blue-500"}`}>
-                    {results}
+                
+                {status && (
+                  <p className={`text-center text-sm font-medium mt-4 ${status.includes("successfully") ? "text-green-500" : "text-blue-500"}`}>
+                    {status}
                   </p>
                 )}
               </form>
