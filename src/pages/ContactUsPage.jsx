@@ -28,6 +28,11 @@ const SelectPane = ({ value, onChange, options }) => (
                   <span className={`block truncate ${selected ? 'font-bold' : 'font-normal'}`}>
                     {queue}
                   </span>
+                  {selected ? (
+                    <span className='absolute inset-y-0 left-0 flex items-center pl-3 text-[#135bec]'>
+                      <div className='w-1.5 h-1.5 rounded-full bg-[#135bec]'></div>
+                    </span>
+                  ) : null }
                 </>
               )}
             </ListboxOption>
