@@ -34,6 +34,34 @@ const SelectPane = ({ value, onChange, options }) => (
 
 const ContactUsPage = () => {
   const [selectedQuery, setSelectedQuery] = useState(querys[0]);
+  const [results, setResults] = useState("");
+
+
+  const handleForm = async (event) => {
+    event.preventDefault();
+    setResults("Sending....");
+
+    const formData = new FormData(event.target);
+    formData.append("access_keys", import.meta.env.VITE_GREATWALL_HUB_CONTACT_FORM);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+  
+      const data = response.json();
+  
+      if(data.success){
+        setResults("Form submitted successfully");
+        event.target.reset();
+      } else{
+        setResults(data.message);
+      }
+    } catch (error) {
+      setResults("SOmething went wrong. Please try again.");
+    }
+  }
 
   return (
     <div className="bg-white dark:bg-[#050a18] text-slate-900 dark:text-white min-h-screen relative overflow-hidden">
