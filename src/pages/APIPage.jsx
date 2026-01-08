@@ -111,7 +111,7 @@ const APIPage = () => {
       </div>
 
       {/* STATUS SECTION PING */}
-      <div className="absolute bottom-14 left-10 hidden md:block">
+      <div className="absolute bottom-14 left-10 hidden md:block mb-1.5">
         <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-[#135bec] animate-ping"></div>
             <p className="text-[10px] font-black text-slate-400 dark:text-slate-200 uppercase tracking-[0.3em]">
