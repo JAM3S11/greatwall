@@ -158,6 +158,11 @@ const ContactUsPage = () => {
                 <button type='submit' className="w-full bg-[#135bec] text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 active:scale-95">
                   Send Message <Send size={18} />
                 </button>
+                {results && (
+                  <p className={`text-center text-sm font-medium mt-4 ${results.includes("successfully") ? "text-green-500" : "text-blue-500"}`}>
+                    {results}
+                  </p>
+                )}
               </form>
             </div>
           </div>
