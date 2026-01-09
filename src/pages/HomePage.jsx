@@ -38,55 +38,80 @@ const HomePage = () => {
               transition={{ duration: 0.8, ease: "easeInOut" }}
               className="flex-1 text-center md:text-left">
               <motion.div 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0}}
-                transition={{ delay: 0.2, duration: 0.5 }}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0}}
+                transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#135bec] text-xs font-bold uppercase mb-6">
                 <span className="w-2 h-2 rounded-full bg-[#135bec] animate-pulse"></span>
                 {isWalletConnected ? "Node Active: 0x...4F2" : "Live on Nairobi Testnet"}
               </motion.div>
               <motion.h1 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0}}
-                transition={{ delay: 0.4, duration: 0.6 }}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0}}
+                transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
                 className="text-5xl lg:text-7xl font-bold tracking-tighter leading-tight">
                 Powering Kenya's <br/>
                 <motion.span 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.8, duration: 0.8 }}
+                  transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
                   className="text-transparent bg-clip-text bg-gradient-to-r from-[#135bec] to-blue-400">
                   Future with AI
                 </motion.span> & Web3
               </motion.h1>
-              <p className="text-lg text-slate-600 dark:text-gray-400 mt-6 max-w-xl">
+              <motion.p 
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
+                className="text-lg text-slate-600 dark:text-gray-400 mt-6 max-w-xl">
                 Great Wall is the first decentralized energy management protocol. Optimize consumption, earn rewards, and contribute to a sustainable grid.
-              </p>
-              <div className="flex flex-wrap gap-4 mt-10 justify-center md:justify-start">
-                <button 
+              </motion.p>
+              <motion.div 
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
+                className="flex flex-wrap gap-4 mt-10 justify-center md:justify-start">
+                <motion.button
+                  whileHover={{ scale: 1.05 }} 
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => navigate("/login")}
                   className="h-12 px-8 bg-[#135bec] text-white rounded-lg font-bold flex items-center gap-2 shadow-xl shadow-blue-500/20 transition-all hover:scale-105">
                   {isWalletConnected ? "Access Dashboard" : "Get Started"} <ArrowRight size={18} />
-                </button>
-                <button 
+                </motion.button>
+                <motion.button 
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => navigate('/whitepaper')}
                   className="h-12 px-8 bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] rounded-lg font-bold hover:bg-gray-50 dark:hover:bg-[#232f48] transition-colors">
                   Read Whitepaper
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
             </motion.div>
             {/* Right Side */}
-            <div className="flex-1 relative group">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-slate-900">
-                <img 
+            <motion.div 
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+              className="flex-1 relative group">
+              <motion.div 
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-slate-900">
+                <motion.img 
+                  initial={{ scale: 1.1, filter: "blur(10px)" }}
+                  animate={{ scale: 1, filter: "blur(0px)" }}
+                  transition={{ duration: 1.2 }}
                   src="https://images.unsplash.com/photo-1596005554384-d293674c91d7?q=80&w=1198&auto=format&fit=crop" 
                   alt="Nairobi Energy" 
                   className="w-full h-[450px] object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 brightness-75 group-hover:brightness-100" 
                 />
-                <div className="absolute top-4 right-4 flex items-center gap-2 px-3 py-1 bg-black/50 backdrop-blur-md rounded-full border border-white/20">
+                <motion.div 
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8 }}
+                  className="absolute top-4 right-4 flex items-center gap-2 px-3 py-1 bg-black/50 backdrop-blur-md rounded-full border border-white/20">
                   <span className="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
                   <span className="text-[10px] font-mono text-white uppercase tracking-tighter">Live Feed: Node_04</span>
-                </div>
+                </motion.div>
                 <div className="absolute bottom-4 left-4 right-4 backdrop-blur-xl bg-white/5 p-5 rounded-xl border border-white/20 shadow-2xl">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2 text-white text-sm font-bold">
@@ -108,8 +133,8 @@ const HomePage = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
