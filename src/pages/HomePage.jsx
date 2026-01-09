@@ -112,27 +112,42 @@ const HomePage = () => {
                   <span className="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
                   <span className="text-[10px] font-mono text-white uppercase tracking-tighter">Live Feed: Node_04</span>
                 </motion.div>
-                <div className="absolute bottom-4 left-4 right-4 backdrop-blur-xl bg-white/5 p-5 rounded-xl border border-white/20 shadow-2xl">
+                <motion.div 
+                  initial={{ opacity: 0, y: 60 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+                  className="absolute bottom-4 left-4 right-4 backdrop-blur-xl bg-white/5 p-5 rounded-xl border border-white/20 shadow-2xl">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2 text-white text-sm font-bold">
                       <MapPin size={16} className="text-[#135bec]" /> 
                       <span className="tracking-wide">Nairobi, Kenya</span>
                     </div>
-                    <div className="text-[10px] text-blue-400 font-mono">SECURE_PROTOCOL_V4.2</div>
+                    <motion.div 
+                      animate={{ opacity: [0.4, 1.0, 0.4] }}
+                      transition={{ repeat: Infinity, duration: 2 }}
+                      className="text-[10px] text-blue-400 font-mono">
+                      SECURE_PROTOCOL_V4.
+                    </motion.div>
                   </div>
                   <div className="space-y-2">
                     <div className="flex justify-between text-[10px] text-gray-400 font-mono uppercase">
                       <span>Current Grid Load</span>
-                      <span>{isWalletConnected ? 'Optimization Active' : '75.4% Capacity'}</span>
+                      <motion.span
+                        key={isWalletConnected}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}>
+                        {isWalletConnected ? 'Optimization Active' : '75.4% Capacity'}
+                      </motion.span>
                     </div>
                     <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden border border-white/5">
-                      <div className={
-                        `h-full bg-gradient-to-r from-[#135bec] to-blue-400 transition-all duration-1000 ease-out 
-                        ${isWalletConnected ? 'w-full' : 'w-[75%]'}`}
-                      ></div>
+                      <motion.div initial={{ width: 0 }}
+                        animate={{ width: isWalletConnected ? '100%' : '75%' }}
+                        transition={{ duration: 1.5, ease: "circOut" }}
+                        className="h-full bg-gradient-to-r from-[#135bec] to-blue-400"
+                      ></motion.div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             </motion.div>
           </div>
