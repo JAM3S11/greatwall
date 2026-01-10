@@ -162,13 +162,37 @@ const HomePage = () => {
             { label: 'Active Nodes', val: '528 Online', icon: Network },
             { label: 'Token Price', val: '$1.24 (+4.2%)', icon: Coins }
           ].map((stat, i) => (
-            <div key={i} className="flex items-center gap-5 p-6 rounded-xl bg-gray-50 dark:bg-[#192233] border border-gray-100 dark:border-[#324467] hover:shadow-md transition-shadow">
-              <div className="p-3 bg-[#135bec]/10 rounded-lg text-[#135bec]"><stat.icon size={24} /></div>
+            <motion.div 
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px"}}
+              transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+              whileHover={{ scale: 1.03, y: -5, boxShadow: "0px 10px 20px rgba(0,0,0,0.05)" }}
+              whileTap={{ scale: 0.98 }}
+              key={i} className="flex items-center gap-5 p-6 rounded-xl bg-gray-50 dark:bg-[#192233] border border-gray-100 dark:border-[#324467] hover:shadow-md transition-shadow">
+              <motion.div 
+                whileHover={{ rotate: [0, -10, 10, 0]}}
+                transition={{ duration: 0.5 }}
+                className="p-3 bg-[#135bec]/10 rounded-lg text-[#135bec]">
+                <stat.icon size={24} />
+              </motion.div>
               <div>
-                <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">{stat.label}</p>
-                <p className="text-2xl font-bold">{stat.val}</p>
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: (i * 0.1) + 0.3 }}
+                  className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+                  {stat.label}
+                </motion.p>
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: (i * 0.1) + 0.4 }}
+                  className="text-2xl font-bold">
+                  {stat.val}
+                </motion.p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -176,14 +200,22 @@ const HomePage = () => {
       {/* 4. Ecosystem Pillars Section */}
       <section className="py-24 bg-gray-50 dark:bg-[#0b0f17]">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#135bec] text-xs font-bold uppercase mb-4">
+          <motion.div 
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16">
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1}}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#135bec] text-xs font-bold uppercase mb-4">
               Our Core Strategy
-            </div>
+            </motion.div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
               Key Pillars of our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#135bec] to-blue-400">Ecosystem</span>
             </h2>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -200,14 +232,29 @@ const HomePage = () => {
                   icon: Wallet 
                 }
             ].map((pillar, i) => (
-              <div key={i} className="group relative p-8 rounded-2xl bg-white dark:bg-[#192233] border border-gray-100 dark:border-[#324467] hover:border-[#135bec] transition-all duration-300">
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-blue-500/10 text-blue-500 group-hover:scale-110 transition-transform">
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, x: i % 2 === 0 ? "-30" : "30"}}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: i * 0.2, type: "spring", bounce: 0.4}}
+                whileHover={{ y: -10 }}
+                className="group relative p-8 rounded-2xl bg-white dark:bg-[#192233] border border-gray-100 dark:border-[#324467] hover:border-[#135bec] transition-all duration-300">
+                <motion.div 
+                  whileHover={{ scale: 1.02, rotate: 5 }}
+                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-blue-500/10 text-blue-500 group-hover:scale-110 transition-transform">
                   <pillar.icon size={28} />
-                </div>
+                </motion.div>
                 <h3 className="text-xl font-bold mb-3 group-hover:text-[#135bec] transition-colors">{pillar.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{pillar.desc}</p>
-                <span className="absolute top-4 right-8 text-6xl font-black text-gray-100 dark:text-white/5 pointer-events-none select-none">0{i + 1}</span>
-              </div>
+                <motion.span 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1}}
+                  transition={{ delay: (i * 0.2) + 0.5, duration: 0.8 }}
+                  className="absolute top-4 right-8 text-6xl font-black text-gray-100 dark:text-white/5 pointer-events-none select-none">
+                  0{i + 1}
+                </motion.span>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -216,18 +263,28 @@ const HomePage = () => {
       {/* How It Works Section */}
       <section className="py-24 relative overflow-hidden bg-white dark:bg-[#0f141e]">
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="text-center mb-20">
+          <motion.div 
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-20">
             <h2 className="text-4xl font-bold tracking-tight mb-4">
               Join the <span className="text-[#135bec]">Great Wall</span> Network
             </h2>
             <p className="text-gray-500 max-w-xl mx-auto">
               Follow these simple steps to start optimizing your energy and earning rewards.
             </p>
-          </div>
+          </motion.div>
 
           <div className="relative">
             {/* Desktop Connector Line */}
-            <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent"></div>
+            <motion.div 
+              initial={{ scaleX: 0, opacity: 0 }}
+              whileHover={{ scaleX: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut"}}
+              className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent"></motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
               {[
