@@ -10,9 +10,9 @@ const HomePage = () => {
 
   return (
     <motion.div 
-      initial={{ y: 5, opacity: 0 }}
+      initial={{ y: 1, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
       className="bg-white dark:bg-[#050a18] text-slate-900 dark:text-white">
       
       {/* 1. AI Alert Notification */}
