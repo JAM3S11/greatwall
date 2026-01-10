@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Code2, Terminal, ChevronRight, Lock, Globe, Copy, Cpu } from 'lucide-react';
 
@@ -14,30 +15,57 @@ const APIPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#050a18] flex flex-col items-center justify-center p-6 relative overflow-hidden">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-slate-50 dark:bg-[#050a18] flex flex-col items-center justify-center p-6 relative overflow-hidden">
+      
       {/* DIV BG GRID PATTERN */}
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
            style={{ backgroundImage: 'linear-gradient(#135bec 1.5px, transparent 1.5px), linear-gradient(90deg, #135bec 1.5px, transparent 1.5px)', backgroundSize: '40px 40px' }}>
       </div>
 
       <div className="z-10 w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        
         {/* Left */}
-        <div className="space-y-8 text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-[#135bec] text-xs font-bold uppercase tracking-wider">
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="space-y-8 text-left"
+        >
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-[#135bec] text-xs font-bold uppercase tracking-wider">
             <Cpu size={12} className="animate-pulse" /> 
             Feature Coming Soon
-          </div>
+          </motion.div>
           
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-slate-200 tracking-tighter leading-none">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-5xl md:text-7xl font-black text-slate-900 dark:text-slate-200 tracking-tighter leading-none">
             PROGRAM THE <br />
             <span className="text-[#135bec]">ENERGY</span> GRID.
-          </h1>
+          </motion.h1>
           
-          <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed max-w-md">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed max-w-md">
             The Great Wall API is currently in private beta. Soon, developers will be able to programmatically access grid data and build the future of decentralized power.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-wrap gap-4">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="flex flex-wrap gap-4">
             <div className="flex items-center gap-3 bg-white dark:bg-[#0d1425]/70 p-4 rounded-2xl shadow-sm border border-slate-200 dark:border-[#324467] flex-1 min-w-[200px]">
               <div className="w-10 h-10 rounded-full bg-slate-100 dark:bg-blue-800/50 flex items-center justify-center text-slate-400">
                 <Globe size={20} />
@@ -47,15 +75,25 @@ const APIPage = () => {
                 <p className="text-sm font-mono text-slate-900 dark:text-slate-400">api.greatwall.energy</p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <Link to="/" className="inline-flex items-center gap-2 font-bold text-[#135bec] hover:gap-4 transition-all group">
-            Return back <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+          >
+            <Link to="/" className="inline-flex items-center gap-2 font-bold text-[#135bec] hover:gap-4 transition-all group">
+              Return back <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+        </motion.div>
 
         {/* Right */}
-        <div className="relative group">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95, x: 30 }}
+          whileInView={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-[#135bec] to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
           
           <div className="relative bg-[#0d1117] rounded-2xl shadow-2xl border border-slate-800 overflow-hidden">
@@ -94,7 +132,11 @@ const APIPage = () => {
                 </p>
               </div>
               
-              <div className="mt-6 p-4 rounded-xl bg-blue-500/10 border border-blue-500/20">
+              <motion.div 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                className="mt-6 p-4 rounded-xl bg-blue-500/10 border border-blue-500/20">
                 <div className="flex items-center gap-2 text-blue-400 font-bold mb-2">
                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
                    Status: 503 Deployment Pending
@@ -103,23 +145,27 @@ const APIPage = () => {
                   "The Sentinel API Gateway is currently under internal stress testing. 
                   SDKs for Python and JavaScript are being compiled."
                 </p>
-              </div>
+              </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
       </div>
 
       {/* STATUS SECTION PING */}
-      <div className="absolute bottom-14 left-10 hidden md:block mb-1.5">
+      <motion.div 
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1 }}
+        className="absolute bottom-14 left-10 hidden md:block mb-1.5">
         <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-[#135bec] animate-ping"></div>
             <p className="text-[10px] font-black text-slate-400 dark:text-slate-200 uppercase tracking-[0.3em]">
                 Protocol Status: Development Phase
             </p>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

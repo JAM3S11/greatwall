@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, ChevronDown } from 'lucide-react';
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption, Transition } from '@headlessui/react';
 
@@ -84,7 +85,11 @@ const ContactUsPage = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-[#050a18] text-slate-900 dark:text-white min-h-screen relative overflow-hidden">
+    <motion.div 
+      initial={{ opacity: 0, y: 1 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2, ease: "easeInOut"}}
+      className="bg-white dark:bg-[#050a18] text-slate-900 dark:text-white min-h-screen relative overflow-hidden">
       
       {/* Background Subtle Accents */}
       <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
@@ -97,20 +102,36 @@ const ContactUsPage = () => {
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
             
             {/* Left Column: Information */}
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/50 text-[#135bec] text-[10px] font-extrabold uppercase tracking-widest mb-6">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/50 text-[#135bec] text-[10px] font-extrabold uppercase tracking-widest mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#135bec] animate-pulse"></span>
                 Nairobi Support Hub
-              </div>
-              <h1 className="text-5xl font-bold tracking-tight leading-tight mb-6">
+              </motion.div>
+              <motion.h1 
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-5xl font-bold tracking-tight leading-tight mb-6">
                 Powering Kenya’s <br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#135bec] to-blue-500">
                   Future. Let’s Talk.
                 </span>
-              </h1>
-              <p className="text-slate-500 dark:text-slate-400 text-lg mb-10 leading-relaxed max-w-md">
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-slate-500 dark:text-slate-400 text-lg mb-10 leading-relaxed max-w-md">
                 I focus on writing clean, maintainable, and readable code that makes building and improving products feel smooth and enjoyable.
-              </p>
+              </motion.p>
               
               <div className="space-y-4">
                 {[
@@ -118,7 +139,12 @@ const ContactUsPage = () => {
                   { icon: Phone, label: 'Call Us', val: '+254 716 041 419' },
                   { icon: MapPin, label: 'Visit HQ', val: 'Great Wall Tower, Nairobi' }
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-4 bg-slate-50 dark:bg-[#0d1425]/70 p-5 rounded-2xl border border-slate-200 dark:border-[#324467] group hover:border-[#135bec]/30 transition-all">
+                  <motion.div 
+                    key={idx} 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + (idx * 0.1) }}
+                    className="flex items-center gap-4 bg-slate-50 dark:bg-[#0d1425]/70 p-5 rounded-2xl border border-slate-200 dark:border-[#324467] group hover:border-[#135bec]/30 transition-all">
                     <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-800/50 flex items-center justify-center text-[#135bec]">
                       <item.icon size={20} />
                     </div>
@@ -128,13 +154,17 @@ const ContactUsPage = () => {
                         {item.val} {item.sub && <span className='text-xs text-gray-400 block font-normal'>{item.sub}</span>}
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Column: Form */}
-            <div className="bg-white dark:bg-[#0d1425]/70 p-10 rounded-3xl border border-slate-200 dark:border-blue-800/50 shadow-2xl shadow-slate-200/50 dark:shadow-none relative">
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="bg-white dark:bg-[#0d1425]/70 p-10 rounded-3xl border border-slate-200 dark:border-blue-800/50 shadow-2xl shadow-slate-200/50 dark:shadow-none relative">
               <h3 className="text-xl font-bold mb-8 text-slate-800 dark:text-slate-100">Send us a message</h3>
               <form onSubmit={handleForm} className="space-y-5">
                 <div className="grid grid-cols-2 gap-4">
@@ -147,21 +177,28 @@ const ContactUsPage = () => {
                 
                 <textarea name='message' placeholder="How can we help you scale your energy infrastructure?" rows="4" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#135bec]/20 focus:border-[#135bec] transition-all dark:text-white" required></textarea>
                 
-                <button type='submit' className="w-full bg-[#135bec] text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 active:scale-95">
+                <motion.button 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type='submit' 
+                  className="w-full bg-[#135bec] text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 active:scale-95">
                   Send Message <Send size={18} />
-                </button>
+                </motion.button>
                 
                 {status && (
-                  <p className={`text-center text-sm font-medium mt-4 ${status.includes("successfully") ? "text-green-500" : "text-blue-500"}`}>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`text-center text-sm font-medium mt-4 ${status.includes("successfully") ? "text-green-500" : "text-blue-500"}`}>
                     {status}
-                  </p>
+                  </motion.p>
                 )}
               </form>
-            </div>
+            </motion.div>
           </div>
         </section>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
