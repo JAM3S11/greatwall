@@ -1,9 +1,14 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Target, Eye, Shield, Cpu, Globe } from 'lucide-react';
 
 const AboutPage = () => {
   return (
-    <div className="bg-white dark:bg-[#050a18] text-slate-900 dark:text-white min-h-screen relative overflow-hidden">
+    <motion.div 
+      initial={{ opacity: 0, y: 1 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut"}}
+      className="bg-white dark:bg-[#050a18] text-slate-900 dark:text-white min-h-screen relative overflow-hidden">
       
       {/* HomePage-style Glow Effects */}
       <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
@@ -15,10 +20,14 @@ const AboutPage = () => {
         {/* SECTION 1: HERO HEADER */}
         <section className="py-24 px-8 border-b border-gray-200 dark:border-gray-800/50">
           <div className="max-w-7xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#135bec] text-xs font-bold uppercase mb-6">
+            <motion.div 
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.2, ease: "easeOut"}}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#135bec] text-xs font-bold uppercase mb-6">
               <span className="w-2 h-2 rounded-full bg-[#135bec] animate-pulse"></span>
               About Great Wall
-            </div>
+            </motion.div>
             <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
               Powering Kenya’s Future with <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#135bec] to-blue-400">
@@ -100,7 +109,7 @@ const AboutPage = () => {
           </div>
         </section>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
