@@ -313,37 +313,66 @@ const HomePage = () => {
                   icon: Coins
                 }
               ].map((item, i) => (
-                <div key={i} className="relative flex flex-col items-center text-center group">
+                <motion.div 
+                  key={i} 
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: (i * 0.2), type: "spring", stiffness: 100 }}
+                  className="relative flex flex-col items-center text-center group">
                   {/* Step Number Badge */}
-                  <div className="w-24 h-24 rounded-full bg-white dark:bg-[#192233] border-4 border-gray-50 dark:border-[#0b0f17] flex items-center justify-center mb-6 shadow-xl relative z-10 group-hover:border-[#135bec] transition-all duration-500">
+                  <motion.div 
+                    whileHover={{ scale: 1.2, rotate: 5 }}
+                    className="w-24 h-24 rounded-full bg-white dark:bg-[#192233] border-4 border-gray-50 dark:border-[#0b0f17] flex items-center justify-center mb-6 shadow-xl relative z-10 group-hover:border-[#135bec] transition-all duration-500">
                     <item.icon size={32} className="text-[#135bec]" />
-                    <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#135bec] text-white text-xs font-bold flex items-center justify-center border-2 border-white dark:border-[#192233]">
+                    <motion.span 
+                      initial={{ opacity: 0, scale: 0 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: (i * 0.2) + 0.4 }}
+                      className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#135bec] text-white text-xs font-bold flex items-center justify-center border-2 border-white dark:border-[#192233]">
                       {item.step}
-                    </span>
-                  </div>
+                    </motion.span>
+                  </motion.div>
 
-                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 px-4 leading-relaxed">
+                  <motion.h3 
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: (i * 0.2) + 0.3 }}
+                    className="text-lg font-bold mb-2">
+                    {item.title}
+                  </motion.h3>
+                  <motion.p 
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: (i * 0.2) + 0.3 }}
+                    className="text-sm text-gray-500 dark:text-gray-400 px-4 leading-relaxed">
                     {item.desc}
-                  </p>
+                  </motion.p>
                   
                   {i < 3 && (
                     <div className="md:hidden my-4 text-blue-500/30">
                       <ArrowRight className="rotate-90" size={24} />
                     </div>
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
 
-          <div className="mt-20 flex justify-center">
-            <button 
+          <motion.div 
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="mt-20 flex justify-center">
+            <motion.button 
+              whileHover={{ scale: 1.05, boxShadow: "0px 20px 40px rgba(19, 91, 236, 0.3)"}}
+              whileTap={{ scale: 0.95 }}
               onClick={() => navigate("/login")}
               className="group flex items-center gap-3 px-8 py-4 bg-[#135bec] text-white rounded-xl font-bold hover:shadow-2xl hover:shadow-blue-500/40 transition-all active:scale-95">
               Ready to Connect? <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         </div>
       </section>
     </motion.div>
