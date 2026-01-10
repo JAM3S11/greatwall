@@ -10,7 +10,7 @@ const HomePage = () => {
 
   return (
     <motion.div 
-      initial={{ y: 10, opacity: 0 }}
+      initial={{ y: 5, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
       className="bg-white dark:bg-[#050a18] text-slate-900 dark:text-white">
