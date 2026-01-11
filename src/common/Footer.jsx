@@ -27,15 +27,31 @@ const Footer = () => {
     )
     .then(() => {
       setIsSubmitting(false);
-      toast.success("Thank, we shall keep you updated on latest updates", 
-        { removeDelay: 4000, position: "top-center" }
-      );
+      toast.success("Thank you! We will keep you updated on the latest news.", { 
+        duration: 4000, 
+        position: "top-right", 
+        style: {
+          background: '#0d1425', // Matches your dark theme
+          color: '#fff',
+          border: '1px solid #135bec', // Your blue branding
+          borderRadius: '16px',
+          fontSize: '14px',
+          fontWeight: 'bold',
+        },
+        iconTheme: {
+          primary: '#135bec',
+          secondary: '#fff',
+        },
+      });
       e.target.reset();
       scrollToTop();
     }, () => {
       setIsSubmitting(false);
-      toast.error("Network error. Please try again later.")
-    })
+      toast.error("Network error. Please try again later.", {
+        duration: 5000,
+        position: "top-center"
+      });
+    });
   }
 
   return (

@@ -11,13 +11,14 @@ import BlogPage from "./pages/BlogPage.jsx";
 import APIPage from "./pages/APIPage.jsx";
 import WhitePaperPage from "./pages/WhitePaperPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   return (
     <EnergyProvider>
       <div className="flex flex-col min-h-screen">
         <Header />
-        
+        <Toaster />
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />

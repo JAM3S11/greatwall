@@ -51,6 +51,7 @@ This project is built with modern web technologies:
 * **Vite 7.2.4** - Build tool and dev server
 * **React Router 7.11.0** - Client-side routing
 * **Tailwind CSS 3.4.19** - Utility-first CSS framework
+* **Framer Motion 12.24.12** - Animation library for smooth UI transitions
 * **Lucide React** - Icon library
 * **ESLint** - Code linting
 
@@ -131,7 +132,8 @@ GREATWALL/
 * **Real-Time Monitoring**: Live energy grid status and metrics
 * **Web3 Integration**: Wallet connection and blockchain interactions
 * **AI Alerts**: Intelligent anomaly detection and notifications
-* **Modern UI**: High-tech visual identity with gradient effects and animations
+* **Modern UI**: High-tech visual identity with gradient effects and smooth animations
+* **Framer Motion Animations**: Interactive page transitions, hover effects, and engaging micro-interactions throughout the application
 
 ---
 
@@ -142,12 +144,6 @@ For technical support or partnership inquiries, visit our **Nairobi Support Hub*
 * **Email**: support@greatwall.ke (yet to come) ~ jdndirangu2020@gmail.com
 * **Phone**: +254 716041419
 * **Location**: Great Wall Tower ~ Nairobi
-
----
-
-## 📄 License
-
-This project is private and proprietary.
 
 ---
 
