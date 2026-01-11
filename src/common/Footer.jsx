@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { Bolt, Send, TwitterIcon, Code, Github} from 'lucide-react';
+import { Bolt, Send, TwitterIcon, Code, Github, Loader2} from 'lucide-react';
 import { Link } from 'react-router-dom';
-import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 import toast from 'react-hot-toast';
 
 const Footer = () => {
@@ -27,8 +27,11 @@ const Footer = () => {
     )
     .then(() => {
       setIsSubmitting(false);
-      toast.success("Thank, we shall keep you updated on latest updates", { removeDelay: 200, position: "top-center" });
+      toast.success("Thank, we shall keep you updated on latest updates", { removeDelay: 400, position: "top-center" });
       e.target.reset();
+    }, () => {
+      setIsSubmitting(false);
+      toast.error("Network error. Please try again later.")
     })
   }
 
@@ -80,7 +83,7 @@ const Footer = () => {
           <div>
             <h4 className="text-slate-900 dark:text-white font-bold mb-5 text-sm uppercase tracking-wider">Stay Updated</h4>
             <p className="text-xs text-gray-500 dark:text-gray-100 mb-4">Get the latest on grid status and token rewards.</p>
-            <form className='space-y-2'>
+            <form ref={form} onSubmit={sendEmailForm} className='space-y-2'>
               <div className="flex gap-2">
                 <input 
                   name="user_email"
@@ -89,8 +92,8 @@ const Footer = () => {
                   type="email"
                   required
                 />
-                <button className="bg-[#135bec] hover:bg-[#135bec]/90 text-white px-4 py-2 rounded-lg shadow-lg shadow-blue-500/20 transition-all active:scale-95">
-                  <Send size={16} />
+                <button disabled={isSubmitting} className="bg-[#135bec] hover:bg-[#135bec]/90 text-white px-4 py-2 rounded-lg shadow-lg shadow-blue-500/20 transition-all active:scale-95">
+                  {isSubmitting ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
                 </button>
               </div>
             </form>
