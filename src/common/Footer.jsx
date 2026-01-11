@@ -28,9 +28,10 @@ const Footer = () => {
     .then(() => {
       setIsSubmitting(false);
       toast.success("Thank, we shall keep you updated on latest updates", 
-        { removeDelay: 400, position: "top-center" }
+        { removeDelay: 4000, position: "top-center" }
       );
       e.target.reset();
+      scrollToTop();
     }, () => {
       setIsSubmitting(false);
       toast.error("Network error. Please try again later.")
