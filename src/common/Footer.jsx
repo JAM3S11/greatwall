@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Bolt, Send, TwitterIcon, Code, Github} from 'lucide-react';
 import { Link } from 'react-router-dom';
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+import toast from 'react-hot-toast';
 
 const Footer = () => {
+  const form = useRef();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   // Function to ensure scroll to top (extra safety)
   const scrollToTop = () => {
     window.scrollTo({
@@ -10,6 +14,23 @@ const Footer = () => {
       behavior: 'smooth'
     });
   };
+
+  const sendEmailForm = (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    emailjs.sendForm(
+      import.meta.env.VITE_EMAIL_JS_SERVICE_ID,
+      import.meta.env.VITE_EMAIL_TEMPLATE_ID,
+      form.current,
+      import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY
+    )
+    .then(() => {
+      setIsSubmitting(false);
+      toast.success("Thank, we shall keep you updated on latest updates", { removeDelay: 200, position: "top-center" });
+      e.target.reset();
+    })
+  }
 
   return (
     <footer className="bg-white dark:bg-[#070c1a] border-t border-gray-200 dark:border-[#232f48] pt-16 pb-8 transition-colors duration-300">
@@ -59,16 +80,20 @@ const Footer = () => {
           <div>
             <h4 className="text-slate-900 dark:text-white font-bold mb-5 text-sm uppercase tracking-wider">Stay Updated</h4>
             <p className="text-xs text-gray-500 dark:text-gray-100 mb-4">Get the latest on grid status and token rewards.</p>
-            <div className="flex gap-2">
-              <input 
-                className="bg-gray-100 border border-gray-200 text-sm rounded-lg px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-[#135bec]/50 focus:border-[#135bec] transition-all" 
-                placeholder="Email address" 
-                type="email"
-              />
-              <button className="bg-[#135bec] hover:bg-[#135bec]/90 text-white px-4 py-2 rounded-lg shadow-lg shadow-blue-500/20 transition-all active:scale-95">
-                <Send size={16} />
-              </button>
-            </div>
+            <form className='space-y-2'>
+              <div className="flex gap-2">
+                <input 
+                  name="user_email"
+                  className="bg-gray-100 border border-gray-200 text-sm rounded-lg px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-[#135bec]/50 focus:border-[#135bec] transition-all" 
+                  placeholder="Email address" 
+                  type="email"
+                  required
+                />
+                <button className="bg-[#135bec] hover:bg-[#135bec]/90 text-white px-4 py-2 rounded-lg shadow-lg shadow-blue-500/20 transition-all active:scale-95">
+                  <Send size={16} />
+                </button>
+              </div>
+            </form>
           </div>
         </div>
 
