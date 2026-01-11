@@ -27,7 +27,9 @@ const Footer = () => {
     )
     .then(() => {
       setIsSubmitting(false);
-      toast.success("Thank, we shall keep you updated on latest updates", { removeDelay: 400, position: "top-center" });
+      toast.success("Thank, we shall keep you updated on latest updates", 
+        { removeDelay: 400, position: "top-center" }
+      );
       e.target.reset();
     }, () => {
       setIsSubmitting(false);
