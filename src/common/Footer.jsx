@@ -103,6 +103,7 @@ const Footer = () => {
             <h4 className="text-slate-900 dark:text-white font-bold mb-5 text-sm uppercase tracking-wider">Stay Updated</h4>
             <p className="text-xs text-gray-500 dark:text-gray-100 mb-4">Get the latest on grid status and token rewards.</p>
             <form ref={form} onSubmit={sendEmailForm} className='space-y-2'>
+              <input name='year' type='hidden' value={new Date().getFullYear()} />
               <div className="flex gap-2">
                 <input 
                   name="user_email"
@@ -111,8 +112,8 @@ const Footer = () => {
                   type="email"
                   required
                 />
-                <button disabled={isSubmitting} className="bg-[#135bec] hover:bg-[#135bec]/90 text-white px-4 py-2 rounded-lg shadow-lg shadow-blue-500/20 transition-all active:scale-95">
-                  {isSubmitting ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+                <button type='submit' disabled={isSubmitting} className="bg-[#135bec] hover:bg-[#135bec]/90 text-white px-4 py-2 rounded-lg shadow-lg shadow-blue-500/20 transition-all active:scale-95">
+                  {isSubmitting && window.KeyboardEvent ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
                 </button>
               </div>
             </form>
