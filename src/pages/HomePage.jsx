@@ -12,7 +12,7 @@ const HomePage = () => {
     <motion.div 
       initial={{ y: 1, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.1, ease: "easeOut" }}
+      transition={{ duration: 0.1, ease: "easeOut", staggerChildren: 0.5 }}
       className="bg-white dark:bg-[#050a18] text-slate-900 dark:text-white">
       
       {/* 1. AI Alert Notification */}

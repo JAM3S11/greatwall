@@ -14,7 +14,7 @@ const ServicePage = () => {
     <motion.div 
       initial={{ y: 1, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.2, ease: "easeInOut" }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
       className="bg-white dark:bg-[#050a18] text-slate-900 min-h-screen relative overflow-hidden">
       
       {/* Glow Effects */}

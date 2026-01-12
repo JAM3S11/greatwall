@@ -88,7 +88,7 @@ const ContactUsPage = () => {
     <motion.div 
       initial={{ opacity: 0, y: 1 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2, ease: "easeInOut"}}
+      transition={{ duration: 0.2, ease: "easeOut"}}
       className="bg-white dark:bg-[#050a18] text-slate-900 dark:text-white min-h-screen relative overflow-hidden">
       
       {/* Background Subtle Accents */}
