@@ -147,6 +147,12 @@ For technical support or partnership inquiries, visit our **Nairobi Support Hub*
 
 ---
 
+## 📄 Terms of Service & Privacy Policy
+
+A comprehensive Terms of Service document is currently being developed. The Privacy Policy will be included as part of the Terms of Service to ensure transparency regarding data collection, usage, and user rights within the Great Wall Energy platform.
+
+---
+
 ## 🔮 Future Enhancements
 
 * Integration with actual blockchain networks
