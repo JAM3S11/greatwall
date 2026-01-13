@@ -132,9 +132,9 @@ const Footer = () => {
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#135bec] transition-colors" disabled><TwitterIcon size={20} /></a>
               <Link to="/" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors"><Code size={20} /></Link>
             </div>
-            <div className='flex gap-4 text-gray-400 dark:text-gray-100 -mb-4'>
-              <a className='hover:text-[#135bec] transition-colors text-sm font-light cursor-pointer'>Privacy Policy</a>
-              <a className='hover:text-[#135bec] transition-colors text-sm font-light cursor-pointer'>Terms of Service</a>
+            <div className='flex gap-4 text-slate-500 dark:text-gray-300'>
+              <Link to='/privacypolicy' className='hover:text-[#135bec] transition-colors text-sm font-light cursor-pointer' onClick={scrollToTop}>Privacy Policy</Link>
+              <Link to='/termsofservice' className='hover:text-[#135bec] transition-colors text-sm font-light cursor-pointer' onClick={scrollToTop}>Terms of Service</Link>
             </div>
           </div>
         </div>

@@ -12,6 +12,8 @@ import APIPage from "./pages/APIPage.jsx";
 import WhitePaperPage from "./pages/WhitePaperPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import { Toaster } from "react-hot-toast";
+import PrivacyPolicy from "./policy/PrivacyPolicy.jsx";
+import TermsOfService from "./policy/TermsOfService.jsx";
 
 export default function App() {
   return (
@@ -29,6 +31,8 @@ export default function App() {
             <Route path="/api" element={<APIPage />} />
             <Route path="/whitepaper" element={<WhitePaperPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+            <Route path="/termsofservice" element={<TermsOfService />} />
           </Routes>
         </main>
 

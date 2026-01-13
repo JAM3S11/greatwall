@@ -135,12 +135,13 @@ const ContactUsPage = () => {
               
               <div className="space-y-4">
                 {[
-                  { icon: Mail, label: 'Email Us', val: 'support@greatwall.ke', sub: 'jdndirangu2020@gmail.com' },
-                  { icon: Phone, label: 'Call Us', val: '+254 716 041 419' },
+                  { icon: Mail, label: 'Email Us', val: 'support@greatwall.ke', sub: 'jdndirangu2020@gmail.com', href: 'mailto:jdndirangu2020@gmail.com' },
+                  { icon: Phone, label: 'Call Us', val: '+254 716 041 419', href: '+254716041419' },
                   { icon: MapPin, label: 'Visit HQ', val: 'Great Wall Tower, Nairobi' }
                 ].map((item, idx) => (
-                  <motion.div 
+                  <motion.a 
                     key={idx} 
+                    href={item.href}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 + (idx * 0.1) }}
@@ -154,7 +155,7 @@ const ContactUsPage = () => {
                         {item.val} {item.sub && <span className='text-xs text-gray-400 block font-normal'>{item.sub}</span>}
                       </p>
                     </div>
-                  </motion.div>
+                  </motion.a>
                 ))}
               </div>
             </motion.div>
