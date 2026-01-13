@@ -126,10 +126,16 @@ const Footer = () => {
             © 2026 Great Wall Energy. AI Sentinel Protected.
           </p>
           
-          <div className="flex gap-6 text-gray-400 dark:text-slate-100">
-            <a href="https://github.com/JAM3S11/greatwall.git" target="_blank" rel="noopener noreferrer" className="hover:text-[#135bec] transition-colors"><Github size={20} /></a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#135bec] transition-colors"><TwitterIcon size={20} /></a>
-            <Link to="/" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors"><Code size={20} /></Link>
+          <div className='flex flex-col items-center md:items-end gap-3'>
+            <div className="flex gap-6 text-gray-400 dark:text-slate-100">
+              <a href="https://github.com/JAM3S11/greatwall.git" target="_blank" rel="noopener noreferrer" className="hover:text-[#135bec] transition-colors"><Github size={20} /></a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#135bec] transition-colors" disabled><TwitterIcon size={20} /></a>
+              <Link to="/" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors"><Code size={20} /></Link>
+            </div>
+            <div className='flex gap-4 text-gray-400 dark:text-gray-100 -mb-4'>
+              <a className='hover:text-[#135bec] transition-colors text-sm font-light cursor-pointer'>Privacy Policy</a>
+              <a className='hover:text-[#135bec] transition-colors text-sm font-light cursor-pointer'>Terms of Service</a>
+            </div>
           </div>
         </div>
       </div>
