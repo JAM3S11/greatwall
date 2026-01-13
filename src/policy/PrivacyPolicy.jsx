@@ -50,7 +50,7 @@ const PrivacyPolicy = () => {
 
           <div>
             <h2 className="text-xl font-semibold dark:text-white mb-4">Contact Us</h2>
-            <p>For any privacy concerns, reach out to our data protection officer at: <span className="text-[#135bec]">support@greatwall.energy</span></p>
+            <p>For any privacy concerns, reach out to our data protection officer at: <a href='mailto:jdndirangu2020@gmail.com' className="text-[#135bec] hover:underline underline-offset-2">jdndirangu2020@gmail.com</a></p>
           </div>
         </section>
       </div>
