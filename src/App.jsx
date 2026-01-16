@@ -33,6 +33,8 @@ export default function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/privacypolicy" element={<PrivacyPolicy />} />
             <Route path="/termsofservice" element={<TermsOfService />} />
+            {/* Add this at the very bottom of the list */}
+            <Route path="*" element={<div className="p-20 text-center">404 - Page Not Found</div>} />
           </Routes>
         </main>
 
