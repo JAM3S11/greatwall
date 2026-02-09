@@ -128,7 +128,7 @@ const Footer = () => {
           
           <div className='flex flex-col items-center md:items-end gap-3'>
             <div className="flex gap-6 text-gray-400 dark:text-slate-100">
-              <a href="https://github.com/JAM3S11/greatwall.git" target="_blank" rel="noopener noreferrer" className="hover:text-[#135bec] transition-colors"><Github size={20} /></a>
+              <a href="https://james-daniel.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-[#135bec] transition-colors"><Github size={20} /></a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#135bec] transition-colors" disabled><TwitterIcon size={20} /></a>
               <Link to="/" onClick={scrollToTop} className="hover:text-[#135bec] transition-colors"><Code size={20} /></Link>
             </div>
