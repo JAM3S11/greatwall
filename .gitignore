@@ -24,4 +24,6 @@ dist-ssr
 *.sw?
 
 GREATWALL.docx
+CV_DESCRIPTION.md
+CV_ADDITIONS_SUMMARY.md
 .env
