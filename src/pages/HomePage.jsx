@@ -337,7 +337,7 @@ const HomePage = () => {
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: (i * 0.2) + 0.4 }}
                       className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#135bec] text-white text-xs font-bold flex items-center justify-center border-2 border-white dark:border-[#192233]">
-                      {item.step}
+                      <NumberTicker value={item.step} />
                     </motion.span>
                   </motion.div>
 
