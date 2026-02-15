@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { ArrowRight, MapPin, Zap, Network, Coins, MemoryStick, ShieldCheck, Wallet } from 'lucide-react';
 import { useEnergy } from '../global/EnergyContext'; 
 import { motion } from 'framer-motion';
+import { NumberTicker } from '@/components/ui/number-ticker';
 
 const HomePage = () => {
   const { isWalletConnected, anomalyAlert } = useEnergy();
@@ -158,9 +159,9 @@ const HomePage = () => {
       <section className="py-12 border-y border-gray-200 dark:border-[#232f48] bg-white dark:bg-[#0f141e]">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
-            { label: 'Energy Managed', val: '10,540 kWh', icon: Zap },
-            { label: 'Active Nodes', val: '528 Online', icon: Network },
-            { label: 'Token Price', val: '$1.24 (+4.2%)', icon: Coins }
+            { label: 'Energy Managed', val: 10540, suffix: 'kWh', icon: Zap },
+            { label: 'Active Nodes', val: 528, suffix: 'Online', icon: Network },
+            { label: 'Token Price', val: 1.24, prefix: '$', suffix: '(+4.2%)', icon: Coins, decimalPlaces: 2 }
           ].map((stat, i) => (
             <motion.div 
               initial={{ opacity: 0, x: -10 }}
@@ -189,7 +190,13 @@ const HomePage = () => {
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: (i * 0.1) + 0.4 }}
                   className="text-2xl font-bold">
-                  {stat.val}
+                  <NumberTicker 
+                    value={stat.val}
+                    prefix={stat.prefix}
+                    suffix={stat.suffix}
+                    decimalPlaces={stat.decimalPlaces ?? 0}
+                    className='text-2xl font-bold gap-1'
+                   />
                 </motion.p>
               </div>
             </motion.div>
