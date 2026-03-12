@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { ArrowRight, MapPin, Zap, Network, Coins, MemoryStick, ShieldCheck, Wallet } from 'lucide-react';
+import { ArrowRight, MapPin, Zap, Network, Coins, MemoryStick, ShieldCheck, Wallet, TrendingUp, Globe, Leaf, Lock, Users, Award, ChevronDown, ChevronUp } from 'lucide-react';
 import { useEnergy } from '../global/EnergyContext'; 
 import { motion } from 'framer-motion';
 import { NumberTicker } from '@/components/ui/number-ticker';
@@ -382,6 +382,282 @@ const HomePage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* 5. Why Choose Great Wall */}
+      <section className="py-24 bg-gray-50 dark:bg-[#0b0f17]">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.div 
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16">
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1}}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#135bec] text-xs font-bold uppercase mb-4">
+              Why Choose Great Wall
+            </motion.div>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+              Transform Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#135bec] to-blue-400">Energy Future</span>
+            </h2>
+            <p className="text-gray-500 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
+              Join thousands of households and businesses already saving money while contributing to Kenya's sustainable energy grid.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Save Up to 40%", desc: "Reduce your monthly electricity bills through AI-optimized consumption patterns and peak-hour shifting.", icon: TrendingUp },
+              { title: "Zero Investment", desc: "No upfront costs. Simply connect your smart meter and start earning rewards immediately.", icon: Globe },
+              { title: "Carbon Neutral", desc: "Contribute to Kenya's 100% renewable energy goals and reduce your carbon footprint.", icon: Leaf },
+              { title: "Secure & Private", desc: "Your data is encrypted on the blockchain. Total transparency with complete privacy.", icon: Lock }
+            ].map((benefit, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                whileHover={{ y: -5 }}
+                className="p-6 rounded-2xl bg-white dark:bg-[#192233] border border-gray-100 dark:border-[#324467] hover:border-[#135bec] transition-all duration-300">
+                <div className="w-12 h-12 rounded-lg bg-[#135bec]/10 flex items-center justify-center mb-4">
+                  <benefit.icon className="text-[#135bec]" size={24} />
+                </div>
+                <h3 className="text-lg font-bold mb-2">{benefit.title}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{benefit.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. AI Sentinel Technology */}
+      <section className="py-24 bg-white dark:bg-[#0f141e]">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="flex-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#135bec] text-xs font-bold uppercase mb-4">
+                AI Sentinel Technology
+              </div>
+              <h2 className="text-4xl font-bold tracking-tight mb-6">
+                Powered by <span className="text-[#135bec]">Advanced AI</span> & Blockchain
+              </h2>
+              <div className="space-y-6">
+                <div className="flex gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-[#135bec]/10 flex items-center justify-center flex-shrink-0">
+                    <ShieldCheck className="text-[#135bec]" size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg mb-1">AI Sentinel Engine</h4>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm">Our proprietary machine learning models analyze consumption patterns in real-time, predicting demand spikes up to 24 hours in advance with 99.2% accuracy.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-[#135bec]/10 flex items-center justify-center flex-shrink-0">
+                    <Network className="text-[#135bec]" size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg mb-1">Nairobi Testnet Blockchain</h4>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm">Built on Ethereum-compatible infrastructure, every energy transaction is recorded immutably, ensuring complete transparency and trust.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-[#135bec]/10 flex items-center justify-center flex-shrink-0">
+                    <Lock className="text-[#135bec]" size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg mb-1">Military-Grade Security</h4>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm">End-to-end encryption, multi-signature wallets, and continuous security audits protect your data and assets around the clock.</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex-1">
+              <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#135bec]/20 to-blue-400/10 p-8 border border-[#135bec]/20">
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { label: "AI Accuracy", value: "99.2%", sub: "Prediction Rate" },
+                    { label: "Response Time", value: "<50ms", sub: "Real-time" },
+                    { label: "Block Time", value: "2.5s", sub: "Fast Confirmations" },
+                    { label: "Uptime", value: "99.99%", sub: "Always On" }
+                  ].map((stat, i) => (
+                    <motion.div 
+                      key={i}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      className="p-4 rounded-xl bg-white dark:bg-[#192233] border border-gray-100 dark:border-[#324467]">
+                      <p className="text-xs text-gray-500 uppercase mb-1">{stat.label}</p>
+                      <p className="text-2xl font-bold text-[#135bec]">{stat.value}</p>
+                      <p className="text-[10px] text-gray-400">{stat.sub}</p>
+                    </motion.div>
+                  ))}
+                </div>
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                  className="mt-6 p-4 rounded-xl bg-[#135bec]/10 border border-[#135bec]/20">
+                  <p className="text-xs text-gray-500 uppercase mb-2">Live Network Status</p>
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span className="text-sm font-mono">All Systems Operational</span>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Partners */}
+      <section className="py-24 bg-gray-50 dark:bg-[#0b0f17]">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.div 
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#135bec] text-xs font-bold uppercase mb-4">
+              Our Partners
+            </div>
+            <h2 className="text-4xl font-bold tracking-tight">
+              Trusted by <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#135bec] to-blue-400">Industry Leaders</span>
+            </h2>
+          </motion.div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+            {[
+              { name: "Kenya Power", icon: Zap },
+              { name: "REA", icon: Network },
+              { name: "UN Energy", icon: Award },
+              { name: "World Bank", icon: Users },
+              { name: "Africa Dev Bank", icon: Globe },
+              { name: "KPLC", icon: Zap }
+            ].map((partner, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                className="flex flex-col items-center gap-3 p-6 rounded-xl bg-white dark:bg-[#192233] border border-gray-100 dark:border-[#324467] hover:border-[#135bec] transition-all cursor-pointer">
+                <partner.icon className="text-gray-400 dark:text-gray-500" size={28} />
+                <span className="text-sm font-semibold text-gray-600 dark:text-gray-300">{partner.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. FAQ */}
+      <section className="py-24 bg-white dark:bg-[#0f141e]">
+        <div className="max-w-3xl mx-auto px-4">
+          <motion.div 
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#135bec] text-xs font-bold uppercase mb-4">
+              FAQ
+            </div>
+            <h2 className="text-4xl font-bold tracking-tight">
+              Frequently Asked <span className="text-[#135bec]">Questions</span>
+            </h2>
+          </motion.div>
+
+          <div className="space-y-4">
+            {[
+              { q: "What is Great Wall?", a: "Great Wall is Kenya's first decentralized energy management protocol that combines AI technology with blockchain to optimize energy consumption, reduce costs, and reward users for contributing to grid stability." },
+              { q: "How does AI optimization work?", a: "Our AI Sentinel Engine analyzes your energy consumption patterns in real-time and automatically optimizes usage to reduce waste. It predicts demand spikes up to 24 hours in advance with 99.2% accuracy." },
+              { q: "How do I start earning rewards?", a: "Simply connect your smart meter or IoT device to our platform through the dashboard. You'll start earning Great Wall tokens immediately for every kilowatt-hour saved." },
+              { q: "Is this service available in my area?", a: "Great Wall is currently live on the Nairobi Testnet and expanding across Kenya. Contact our support team to check availability in your region." },
+              { q: "How much can I save on my energy bills?", a: "Users typically save up to 40% on their monthly electricity bills through AI-optimized consumption patterns and peak-hour shifting. Actual savings depend on your usage habits." }
+            ].map((faq, i) => (
+              <FAQItem key={i} question={faq.q} answer={faq.a} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 9. Final CTA */}
+      <section className="py-24 bg-gray-50 dark:bg-[#0b0f17]">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready to <span className="text-[#135bec]">Transform</span> Your Energy Future?
+          </h2>
+          <p className="text-gray-500 dark:text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
+            Join over 10,000+ households already saving money and contributing to Kenya's sustainable energy grid. Start your journey today.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => navigate("/login")}
+              className="px-8 py-4 bg-[#135bec] text-white rounded-xl font-bold flex items-center gap-2 shadow-xl shadow-blue-500/20">
+              Get Started Now <ArrowRight size={20} />
+            </motion.button>
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/whitepaper')}
+              className="px-8 py-4 bg-white dark:bg-[#192233] border border-gray-200 dark:border-[#324467] text-slate-900 dark:text-white rounded-xl font-bold hover:bg-gray-50 dark:hover:bg-[#232f48] transition-colors">
+              Read Whitepaper
+            </motion.button>
+          </div>
+          <p className="text-gray-400 text-sm mt-8">
+            Need help? Contact our support team at support@greatwall.energy
+          </p>
+        </motion.div>
+      </section>
+    </motion.div>
+  );
+};
+
+const FAQItem = ({ question, answer, index }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      className="border border-gray-200 dark:border-[#324467] rounded-xl overflow-hidden">
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full p-5 flex items-center justify-between text-left bg-gray-50 dark:bg-[#192233] hover:bg-gray-100 dark:hover:bg-[#232f48] transition-colors">
+        <span className="font-semibold text-slate-900 dark:text-white pr-4">{question}</span>
+        {isOpen ? <ChevronUp className="text-[#135bec]" size={20} /> : <ChevronDown className="text-gray-400" size={20} />}
+      </button>
+      <motion.div 
+        initial={false}
+        animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="overflow-hidden">
+        <p className="p-5 pt-0 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+          {answer}
+        </p>
+      </motion.div>
     </motion.div>
   );
 };
