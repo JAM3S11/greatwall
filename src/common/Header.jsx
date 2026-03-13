@@ -148,7 +148,7 @@ const Header = () => {
                 />
 
                 <div 
-                    className={`absolute top-0 left-0 w-full h-1/2 bg-slate-200/90 dark:bg-[#192233]/95 shadow-2xl 
+                    className={`absolute top-0 left-0 w-full h-3/4 bg-slate-200/90 dark:bg-[#192233]/95 shadow-2xl 
                         transition-transform duration-500 ease-in-out flex flex-col p-4 rounded-b-[2.5rem] 
                         border-b border-gray-200/20 dark:border-[#324467]/20 ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}
                     style={{ backdropFilter: 'none' }}
